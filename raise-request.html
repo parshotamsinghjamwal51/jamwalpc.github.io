@@ -5,6 +5,11 @@
 <title>Raise Service Request</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- INTER FONT (PROFESSIONAL FORM FONT) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
@@ -12,9 +17,10 @@
 
 body{
   margin:0;
-  font-family:"Segoe UI", Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:#0b1320;
   color:#eaf6fa;
+  letter-spacing:0.2px;
 }
 
 /* HEADER */
@@ -29,7 +35,8 @@ header{
 }
 
 header h1{
-  font-size:36px;
+  font-size:34px;
+  font-weight:700;
   margin-bottom:6px;
 }
 
@@ -49,17 +56,20 @@ header h1{
 
 .section-title{
   color:#1ec8ff;
-  font-weight:bold;
+  font-weight:600;
   border-bottom:2px solid #1ec8ff;
   margin-bottom:20px;
   padding-bottom:6px;
+  letter-spacing:0.4px;
 }
 
+/* INPUTS */
 label{
   display:block;
   margin-top:18px;
   margin-bottom:6px;
-  font-size:14px;
+  font-size:13.5px;
+  font-weight:500;
   color:#b6d1d9;
 }
 
@@ -69,16 +79,18 @@ input, textarea, select{
   border-radius:8px;
   border:none;
   font-size:14px;
+  font-family: 'Inter', sans-serif;
 }
 
 input[readonly]{
   background:#1e323a;
   color:#9ddcff;
-  font-weight:bold;
+  font-weight:600;
 }
 
 textarea{resize:vertical}
 
+/* TECH BOX */
 .tech-box{
   border:2px dashed #1ec8ff;
   border-radius:14px;
@@ -97,9 +109,10 @@ button{
   padding:14px 36px;
   border-radius:30px;
   margin:10px;
-  font-size:15px;
+  font-size:14.5px;
   font-weight:600;
   cursor:pointer;
+  font-family:'Inter', sans-serif;
   transition:0.3s;
 }
 
@@ -113,8 +126,14 @@ button{
   transform:translateY(-3px);
 }
 
-.print{background:#b9e9f8}
-.pdf{background:#ff9f1c; color:#2b1a00}
+.print{
+  background:#b9e9f8;
+}
+
+.pdf{
+  background:#ff9f1c;
+  color:#2b1a00;
+}
 
 /* FOOTER */
 footer{
@@ -180,8 +199,8 @@ footer{
 
     <div class="buttons">
       <button class="submit" onclick="submitRequest()">📤 Submit</button>
-      <button onclick="window.print()">🖨️ Print</button>
-      <button onclick="window.print()">📄 Download PDF</button>
+      <button class="print" onclick="window.print()">🖨️ Print</button>
+      <button class="pdf" onclick="window.print()">📄 Download PDF</button>
     </div>
 
   </div>
@@ -192,53 +211,35 @@ footer{
 </footer>
 
 <script>
-// Generate UNIQUE REQUEST ID
+// Generate Unique ID
 function generateRequestId(){
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,"0");
-  const day = String(d.getDate()).padStart(2,"0");
-  const h = String(d.getHours()).padStart(2,"0");
-  const min = String(d.getMinutes()).padStart(2,"0");
-  const s = String(d.getSeconds()).padStart(2,"0");
-  const rand = Math.floor(100 + Math.random()*900);
-  return `JPC-${y}${m}${day}-${h}${min}${s}-${rand}`;
+  const d=new Date();
+  return `JPC-${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}-${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}${String(d.getSeconds()).padStart(2,'0')}-${Math.floor(100+Math.random()*900)}`;
 }
 
 // Init
-window.onload = function(){
-  document.getElementById("requestId").value = generateRequestId();
-
-  const timeSelect = document.getElementById("time");
-  for(let h=0; h<24; h++){
-    for(let m=0; m<60; m+=5){
-      const hh = String(h).padStart(2,"0");
-      const mm = String(m).padStart(2,"0");
-      const opt = document.createElement("option");
-      opt.value = `${hh}:${mm}:00`;
-      opt.text = `${hh}:${mm}:00`;
-      timeSelect.appendChild(opt);
+window.onload=function(){
+  requestId.value=generateRequestId();
+  for(let h=0;h<24;h++){
+    for(let m=0;m<60;m+=5){
+      const t=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:00`;
+      time.add(new Option(t,t));
     }
   }
 };
 
-// Submit with validation
 function submitRequest(){
-  const name = nameInput.value.trim();
-  const location = locationInput.value.trim();
-  const problems = problemsInput.value.trim();
-
-  if(!name || !location || !problems){
+  if(!name.value.trim()||!location.value.trim()||!problems.value.trim()){
     alert("Please fill Name, Location and Problems before submitting.");
     return;
   }
 
-  const message =
+  const msg=
 `🆔 Request ID: ${requestId.value}
 
-*Name:* ${name}
-*Location:* ${location}
-*Problems:* ${problems}
+*Name:* ${name.value}
+*Location:* ${location.value}
+*Problems:* ${problems.value}
 *Preferred Date:* ${date.value}
 *Preferred Time:* ${time.value}
 
@@ -247,17 +248,8 @@ function submitRequest(){
 *Charges:* ₹${charges.value}
 *Collection Time:* ${collection.value}`;
 
-  window.open(
-    "https://wa.me/?text=" + encodeURIComponent(message),
-    "_blank"
-  );
+  window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
 }
-
-// Shortcut vars
-const requestId = document.getElementById("requestId");
-const nameInput = document.getElementById("name");
-const locationInput = document.getElementById("location");
-const problemsInput = document.getElementById("problems");
 </script>
 
 </body>
