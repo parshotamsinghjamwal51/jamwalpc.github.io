@@ -17,7 +17,7 @@ body{
   color:#eaf6fa;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   padding:80px 20px;
   text-align:center;
@@ -30,14 +30,10 @@ header{
 
 header h1{
   font-size:36px;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
-header p{
-  opacity:0.9;
-}
-
-/* ===== FORM CARD ===== */
+/* FORM */
 .container{
   max-width:900px;
   margin:40px auto;
@@ -59,7 +55,6 @@ header p{
   padding-bottom:6px;
 }
 
-/* ===== INPUTS ===== */
 label{
   display:block;
   margin-top:18px;
@@ -76,9 +71,14 @@ input, textarea, select{
   font-size:14px;
 }
 
+input[readonly]{
+  background:#1e323a;
+  color:#9ddcff;
+  font-weight:bold;
+}
+
 textarea{resize:vertical}
 
-/* ===== TECH BOX ===== */
 .tech-box{
   border:2px dashed #1ec8ff;
   border-radius:14px;
@@ -86,7 +86,7 @@ textarea{resize:vertical}
   margin-top:30px;
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 .buttons{
   text-align:center;
   margin-top:34px;
@@ -113,22 +113,10 @@ button{
   transform:translateY(-3px);
 }
 
-.print{
-  background:#b9e9f8;
-}
-.print:hover{
-  box-shadow:0 0 18px rgba(185,233,248,0.8);
-}
+.print{background:#b9e9f8}
+.pdf{background:#ff9f1c; color:#2b1a00}
 
-.pdf{
-  background:#ff9f1c;
-  color:#2b1a00;
-}
-.pdf:hover{
-  box-shadow:0 0 22px rgba(255,159,28,0.9);
-}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   text-align:center;
   font-size:13px;
@@ -148,9 +136,11 @@ footer{
 <div class="container">
   <div class="card">
 
-    <!-- CUSTOMER DETAILS -->
     <div class="section">
       <div class="section-title">Customer Details</div>
+
+      <label>Request ID</label>
+      <input id="requestId" readonly>
 
       <label>Name *</label>
       <input id="name" required>
@@ -168,7 +158,6 @@ footer{
       <select id="time"></select>
     </div>
 
-    <!-- TECHNICIAN -->
     <div class="tech-box">
       <div class="section-title">🛠 Technician Use Only</div>
 
@@ -191,8 +180,8 @@ footer{
 
     <div class="buttons">
       <button class="submit" onclick="submitRequest()">📤 Submit</button>
-      <button class="print" onclick="window.print()">🖨️ Print</button>
-      <button class="pdf" onclick="window.print()">📄 Download PDF</button>
+      <button onclick="window.print()">🖨️ Print</button>
+      <button onclick="window.print()">📄 Download PDF</button>
     </div>
 
   </div>
@@ -203,8 +192,23 @@ footer{
 </footer>
 
 <script>
-// Time dropdown
+// Generate UNIQUE REQUEST ID
+function generateRequestId(){
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,"0");
+  const day = String(d.getDate()).padStart(2,"0");
+  const h = String(d.getHours()).padStart(2,"0");
+  const min = String(d.getMinutes()).padStart(2,"0");
+  const s = String(d.getSeconds()).padStart(2,"0");
+  const rand = Math.floor(100 + Math.random()*900);
+  return `JPC-${y}${m}${day}-${h}${min}${s}-${rand}`;
+}
+
+// Init
 window.onload = function(){
+  document.getElementById("requestId").value = generateRequestId();
+
   const timeSelect = document.getElementById("time");
   for(let h=0; h<24; h++){
     for(let m=0; m<60; m+=5){
@@ -218,11 +222,11 @@ window.onload = function(){
   }
 };
 
-// SUBMIT WITH VALIDATION
+// Submit with validation
 function submitRequest(){
-  const name = document.getElementById("name").value.trim();
-  const location = document.getElementById("location").value.trim();
-  const problems = document.getElementById("problems").value.trim();
+  const name = nameInput.value.trim();
+  const location = locationInput.value.trim();
+  const problems = problemsInput.value.trim();
 
   if(!name || !location || !problems){
     alert("Please fill Name, Location and Problems before submitting.");
@@ -230,7 +234,7 @@ function submitRequest(){
   }
 
   const message =
-`🔹 Service Request
+`🆔 Request ID: ${requestId.value}
 
 *Name:* ${name}
 *Location:* ${location}
@@ -248,6 +252,12 @@ function submitRequest(){
     "_blank"
   );
 }
+
+// Shortcut vars
+const requestId = document.getElementById("requestId");
+const nameInput = document.getElementById("name");
+const locationInput = document.getElementById("location");
+const problemsInput = document.getElementById("problems");
 </script>
 
 </body>
