@@ -10,7 +10,7 @@
 <style>
 *{box-sizing:border-box}
 
-html,body{
+html, body{
   margin:0;
   padding:0;
   font-family:"Segoe UI", Arial, sans-serif;
@@ -19,48 +19,53 @@ html,body{
   overflow-y:auto;
 }
 
-/* ===== HEADER ===== */
+/* ================= HEADER ================= */
 header{
-  padding:100px 20px 90px;
+  position:relative;
+  padding:120px 20px 110px;
   text-align:center;
+
   background:
-    linear-gradient(rgba(8,12,25,0.88), rgba(8,12,25,0.88)),
-    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+    linear-gradient(
+      rgba(8,12,25,0.88),
+      rgba(8,12,25,0.88)
+    ),
+    url("shiva-nandi.jpg");
   background-size:cover;
   background-position:center;
 }
 
-/* LOGO */
-.logo-box{
-  display:flex;
-  justify-content:center;
-  margin-bottom:18px;
+/* Soft vignette for blending */
+header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0,0,0,0.15),
+      rgba(0,0,0,0.85)
+    );
+  pointer-events:none;
 }
 
-.logo-box img{
-  width:120px;
-  height:auto;
-  border-radius:50%;
-  padding:10px;
-  background:radial-gradient(circle, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.2) 70%);
-  box-shadow:
-    0 0 25px rgba(0,0,0,0.9),
-    0 0 45px rgba(0,0,0,0.8);
+header *{
+  position:relative;
+  z-index:1;
 }
 
-/* TEXT */
 header h1{
-  font-size:44px;
-  margin:10px 0;
+  font-size:46px;
+  margin-bottom:12px;
 }
 
 .subtitle{
-  font-size:17px;
+  font-size:18px;
   opacity:0.9;
 }
 
 .trust{
-  margin-top:12px;
+  margin-top:14px;
   font-size:15px;
   color:#cfe7ff;
 }
@@ -76,13 +81,13 @@ header h1{
 }
 
 .home{
-  margin-top:8px;
+  margin-top:10px;
   font-weight:bold;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 .actions{
-  margin-top:30px;
+  margin-top:32px;
 }
 
 .btn{
@@ -90,12 +95,12 @@ header h1{
   align-items:center;
   gap:10px;
   margin:10px;
-  padding:14px 34px;
+  padding:14px 36px;
   border-radius:30px;
-  font-weight:bold;
+  font-weight:600;
   text-decoration:none;
   color:#fff;
-  transition:.3s;
+  transition:0.3s ease;
 }
 
 .call{background:#0d6efd}
@@ -104,12 +109,18 @@ header h1{
 .whatsapp{background:#25D366}
 .whatsapp:hover{box-shadow:0 0 28px #25D366; transform:translateY(-3px)}
 
-.request{background:#1ec8ff; color:#00313d}
-.request:hover{box-shadow:0 0 30px rgba(30,200,255,.9); transform:translateY(-3px)}
+.request{
+  background:#1ec8ff;
+  color:#00313d;
+}
+.request:hover{
+  box-shadow:0 0 32px rgba(30,200,255,0.9);
+  transform:translateY(-3px);
+}
 
-/* SECTIONS */
+/* ================= SECTION ================= */
 section{
-  padding:80px 20px;
+  padding:60px 20px 90px;
   background:#f4f7fb;
   color:#111;
 }
@@ -120,11 +131,13 @@ section h2{
   margin-bottom:40px;
 }
 
+/* ================= FOOTER ================= */
 footer{
   background:#050a14;
   text-align:center;
   padding:20px;
   font-size:14px;
+  color:#cfe7ff;
 }
 </style>
 </head>
@@ -132,10 +145,6 @@ footer{
 <body>
 
 <header>
-  <div class="logo-box">
-    <img src="logo.png" alt="Jamwal Logo">
-  </div>
-
   <h1>Jamwal PC & Laptop Services</h1>
 
   <div class="subtitle">
@@ -171,7 +180,7 @@ footer{
 
 <section>
   <h2>Our Services</h2>
-  <!-- your existing services content stays here -->
+  <!-- your existing service cards go here -->
 </section>
 
 <footer>
