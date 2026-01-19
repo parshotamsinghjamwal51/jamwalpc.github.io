@@ -5,7 +5,6 @@
   <title>Jamwal PC & Laptop Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ FAVICON (ONLY NEW ADDITION) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
     <circle cx='50' cy='50' r='48' fill='%230b1320'/>
@@ -16,20 +15,16 @@
           font-weight='bold'>J</text>
   </svg>">
 
-  <!-- Font Awesome 6 -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
       background: #0b1320;
       color: #fff;
     }
-
-    /* ========= HEADER ========= */
     header {
       padding: 110px 20px;
       text-align: center;
@@ -39,16 +34,12 @@
       background-size: cover;
       background-position: center;
     }
-
-    /* 🔹 GLOW TITLE (UNCHANGED) */
     header h1 {
       font-size: 46px;
       text-shadow:
         0 0 8px rgba(30,200,255,0.6),
         0 0 18px rgba(30,200,255,0.35);
     }
-
-    /* 🔹 SUBTITLE UNDERLINE (UNCHANGED) */
     .subtitle {
       position: relative;
       display: inline-block;
@@ -56,7 +47,6 @@
       opacity: 0.9;
       padding-bottom: 14px;
     }
-
     .subtitle::after {
       content: "";
       position: absolute;
@@ -66,16 +56,9 @@
       width: 60%;
       height: 3px;
       border-radius: 4px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #1ec8ff,
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, #1ec8ff, transparent);
       box-shadow: 0 0 10px rgba(30,200,255,0.7);
     }
-
-    /* ========= BUTTONS ========= */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -88,15 +71,11 @@
       color: #fff;
       transition: 0.3s;
     }
-
-    .btn-call {
-      background: #0d6efd;
-    }
+    .btn-call { background: #0d6efd; }
     .btn-call:hover {
       box-shadow: 0 0 30px #0d6efd;
       transform: translateY(-3px);
     }
-
     .btn-whatsapp {
       background: #25D366;
       border-radius: 16px;
@@ -105,21 +84,16 @@
       box-shadow: 0 0 30px #25D366;
       transform: translateY(-3px);
     }
-
-    /* ========= SECTIONS ========= */
     section {
       padding: 80px 20px;
       background: #f4f7fb;
       color: #111;
     }
-
     h2 {
       text-align: center;
       font-size: 34px;
       margin-bottom: 40px;
     }
-
-    /* ========= SERVICES ========= */
     .services {
       max-width: 1100px;
       margin: auto;
@@ -127,7 +101,6 @@
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 30px;
     }
-
     .card {
       background: #fff;
       padding: 35px 25px;
@@ -136,28 +109,22 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       transition: all 0.4s ease;
     }
-
     .card i {
       font-size: 38px;
       color: #0d6efd;
       margin-bottom: 15px;
     }
-
     .card:hover {
       transform: translateY(-14px);
       box-shadow:
         0 0 25px rgba(13,110,253,0.9),
         0 25px 45px rgba(0,0,0,0.3);
     }
-
-    /* 🔹 SERVICE SUB-HEADINGS */
     .card p {
       font-weight: 600;
       color: #2b8fd8;
       text-shadow: 0 0 6px rgba(43,143,216,0.35);
     }
-
-    /* ========= VISITOR INFO ========= */
     .visitor-box {
       max-width: 700px;
       margin: 0 auto;
@@ -167,46 +134,15 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       text-align: center;
     }
-
-    .visitor-box p {
-      margin: 10px 0;
-      font-size: 16px;
-    }
-
-    /* ========= LOCATION ========= */
-    .glow {
-      margin-top: 30px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 30px;
-      background: #0d6efd;
-      color: #fff;
-      font-weight: bold;
-      animation: glow 1.5s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 10px #0d6efd; }
-      to { box-shadow: 0 0 30px #0d6efd; }
-    }
-
     footer {
       background: #050a14;
       text-align: center;
       padding: 20px;
       font-size: 14px;
     }
-
-    /* ========= MOBILE STICKY BAR (UNCHANGED) ========= */
-    .mobile-bar {
-      display: none;
-    }
-
+    .mobile-bar { display: none; }
     @media (max-width: 768px) {
       body { padding-bottom: 70px; }
-
       .mobile-bar {
         display: flex;
         position: fixed;
@@ -217,7 +153,6 @@
         border-top: 1px solid #111;
         z-index: 9999;
       }
-
       .mobile-bar a {
         flex: 1;
         text-align: center;
@@ -226,7 +161,6 @@
         color: #fff;
         text-decoration: none;
       }
-
       .mobile-call { background: #0d6efd; }
       .mobile-whatsapp { background: #25D366; }
     }
@@ -248,7 +182,8 @@
     <i class="fa-solid fa-phone"></i> Call Now
   </a>
 
-  <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
+  <a href="https://wa.me/919810138985?text=Hello%2C%20I%20need%20PC%2FLaptop%20service.%20My%20name%20is%20___"
+     class="btn btn-whatsapp" target="_blank">
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 
@@ -259,26 +194,22 @@
 
 <section>
   <h2>Our Services</h2>
-
   <div class="services">
     <div class="card">
       <i class="fa-solid fa-laptop-code"></i>
       <h3>System Diagnosis</h3>
       <p>Accurate issue detection & analysis</p>
     </div>
-
     <div class="card">
       <i class="fa-brands fa-linux"></i>
       <h3>Linux / Windows Installation</h3>
       <p>Clean OS install & setup</p>
     </div>
-
     <div class="card">
       <i class="fa-solid fa-shield-virus"></i>
       <h3>Software & Virus Issues</h3>
       <p>Error fixing & optimization</p>
     </div>
-
     <div class="card">
       <i class="fa-solid fa-network-wired"></i>
       <h3>Internet & Network Setup</h3>
@@ -288,31 +219,16 @@
 </section>
 
 <section>
-  <h2>Visitor Information</h2>
-
-  <div class="visitor-box">
-    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
-    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
-    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
-  </div>
-</section>
-
-<section>
   <h2>Contact & Location</h2>
-
   <div style="text-align:center;">
     <a href="tel:9810138985" class="btn btn-call">
       <i class="fa-solid fa-phone"></i> 9810138985
     </a>
 
-    <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
+    <a href="https://wa.me/919810138985?text=Hello%2C%20I%20need%20PC%2FLaptop%20service.%20My%20name%20is%20___"
+       class="btn btn-whatsapp" target="_blank">
       <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
     </a>
-
-    <div class="glow">
-      <i class="fa-solid fa-location-dot"></i>
-      Near Boys Degree College, Udhampur
-    </div>
   </div>
 </section>
 
@@ -324,26 +240,11 @@
   <a href="tel:9810138985" class="mobile-call">
     <i class="fa-solid fa-phone"></i> Call
   </a>
-  <a href="https://wa.me/919810138985" class="mobile-whatsapp">
+  <a href="https://wa.me/919810138985?text=Hello%2C%20I%20need%20PC%2FLaptop%20service.%20My%20name%20is%20___"
+     class="mobile-whatsapp">
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 </div>
-
-<script>
-  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("visitCount").innerText = data.value;
-    });
-
-  fetch("https://ipapi.co/json/")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("ip").innerText = data.ip;
-      document.getElementById("location").innerText =
-        data.city + ", " + data.country_name;
-    });
-</script>
 
 </body>
 </html>
