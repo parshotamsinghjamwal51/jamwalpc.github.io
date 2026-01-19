@@ -23,24 +23,42 @@
       padding: 110px 20px;
       text-align: center;
       background:
-        linear-gradient(rgba(8,12,25,0.85), rgba(8,12,25,0.85)),
+        linear-gradient(rgba(8,12,25,0.88), rgba(8,12,25,0.88)),
         url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
       background-size: cover;
       background-position: center;
     }
 
-    header h1 { 
-      font-size: 46px; 
-      margin-bottom: 10px;
+    /* LOGO IMAGE WITH BLACK GLOW */
+    .logo-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:18px;
     }
 
-    header p { 
-      font-size: 18px; 
-      opacity: 0.9; 
+    .logo-wrap img{
+      width:130px;
+      height:auto;
+      border-radius:50%;
+      padding:12px;
+      background:radial-gradient(circle, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.1) 70%);
+      box-shadow:
+        0 0 25px rgba(0,0,0,0.9),
+        0 0 45px rgba(0,0,0,0.8),
+        0 12px 40px rgba(0,0,0,0.95);
+    }
+
+    header h1 {
+      font-size: 46px;
+      margin: 10px 0 6px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
       margin: 6px 0;
     }
 
-    /* TRUST LINE */
     .trust-line{
       margin-top: 14px;
       font-size: 16px;
@@ -48,9 +66,8 @@
       font-weight: 500;
     }
 
-    /* 🔥 ORANGE VALUE LINE */
     .value-line{
-      margin-top: 8px;
+      margin-top: 6px;
       font-size: 16px;
       font-weight: 600;
       color: #ff9f1c;
@@ -91,7 +108,6 @@
       transform: translateY(-3px);
     }
 
-    /* ========= SECTIONS ========= */
     section {
       padding: 80px 20px;
       background: #f4f7fb;
@@ -102,72 +118,6 @@
       text-align: center;
       font-size: 34px;
       margin-bottom: 40px;
-    }
-
-    /* ========= SERVICES ========= */
-    .services {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 35px 25px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transition: all 0.4s ease;
-    }
-
-    .card i {
-      font-size: 38px;
-      color: #0d6efd;
-      margin-bottom: 15px;
-    }
-
-    .card:hover {
-      transform: translateY(-14px);
-      box-shadow:
-        0 0 25px rgba(13,110,253,0.9),
-        0 25px 45px rgba(0,0,0,0.3);
-    }
-
-    /* ========= VISITOR INFO ========= */
-    .visitor-box {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 25px;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-
-    .visitor-box p {
-      margin: 10px 0;
-      font-size: 16px;
-    }
-
-    /* ========= LOCATION ========= */
-    .glow {
-      margin-top: 30px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 30px;
-      background: #0d6efd;
-      color: #fff;
-      font-weight: bold;
-      animation: glow 1.5s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 10px #0d6efd; }
-      to { box-shadow: 0 0 30px #0d6efd; }
     }
 
     footer {
@@ -182,6 +132,12 @@
 <body>
 
 <header>
+
+  <!-- LOGO IMAGE -->
+  <div class="logo-wrap">
+    <img src="data:image/jpeg;base64,REPLACE_BASE64_HERE" alt="Jamwal Logo">
+  </div>
+
   <h1>Jamwal PC & Laptop Services</h1>
 
   <p>System Diagnosis • Linux / Windows Installation • Software Solutions</p>
@@ -191,7 +147,7 @@
   </div>
 
   <div class="value-line">
-    Software Installation Included • No Extra Cost
+    Essential Software Installation Included
   </div>
 
   <p><strong>Home Visit Available – Udhampur</strong></p>
@@ -209,84 +165,9 @@
   </a>
 </header>
 
-<section>
-  <h2>Our Services</h2>
-
-  <div class="services">
-    <div class="card">
-      <i class="fa-solid fa-laptop-code"></i>
-      <h3>System Diagnosis</h3>
-      <p>Accurate issue detection & analysis</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-brands fa-linux"></i>
-      <h3>Linux / Windows Installation</h3>
-      <p>Clean OS install & setup</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-shield-virus"></i>
-      <h3>Software & Virus Issues</h3>
-      <p>Error fixing & optimization</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-network-wired"></i>
-      <h3>Internet & Network Setup</h3>
-      <p>Wi-Fi & LAN configuration</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Visitor Information</h2>
-
-  <div class="visitor-box">
-    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
-    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
-    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
-  </div>
-</section>
-
-<section>
-  <h2>Contact & Location</h2>
-
-  <div style="text-align:center;">
-    <a href="tel:9810138985" class="btn btn-call">
-      <i class="fa-solid fa-phone"></i> 9810138985
-    </a>
-
-    <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-    </a>
-
-    <div class="glow">
-      <i class="fa-solid fa-location-dot"></i>
-      Near Boys Degree College, Udhampur
-    </div>
-  </div>
-</section>
-
 <footer>
   © 2026 Jamwal PC & Laptop Services
 </footer>
-
-<script>
-  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("visitCount").innerText = data.value;
-    });
-
-  fetch("https://ipapi.co/json/")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("ip").innerText = data.ip;
-      document.getElementById("location").innerText =
-        data.city + ", " + data.country_name;
-    });
-</script>
 
 </body>
 </html>
