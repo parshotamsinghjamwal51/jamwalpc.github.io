@@ -18,7 +18,7 @@
       color: #fff;
     }
 
-    /* ========== HEADER ========== */
+    /* ========= HEADER ========= */
     header {
       padding: 110px 20px;
       text-align: center;
@@ -29,17 +29,10 @@
       background-position: center;
     }
 
-    header h1 {
-      font-size: 46px;
-      margin-bottom: 12px;
-    }
+    header h1 { font-size: 46px; }
+    header p { font-size: 18px; opacity: 0.9; }
 
-    header p {
-      font-size: 18px;
-      opacity: 0.9;
-    }
-
-    /* ========== BUTTONS ========== */
+    /* ========= BUTTONS ========= */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -50,29 +43,27 @@
       font-weight: bold;
       text-decoration: none;
       color: #fff;
-      transition: all 0.35s ease;
+      transition: 0.3s;
     }
 
     .btn-call {
       background: #0d6efd;
     }
-
     .btn-call:hover {
+      box-shadow: 0 0 30px #0d6efd;
       transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(13,110,253,0.9);
     }
 
     .btn-whatsapp {
       background: #25D366;
       border-radius: 16px;
     }
-
     .btn-whatsapp:hover {
+      box-shadow: 0 0 30px #25D366;
       transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(37,211,102,0.9);
     }
 
-    /* ========== SECTIONS ========== */
+    /* ========= SECTIONS ========= */
     section {
       padding: 80px 20px;
       background: #f4f7fb;
@@ -82,10 +73,10 @@
     h2 {
       text-align: center;
       font-size: 34px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
-    /* ========== SERVICES ========== */
+    /* ========= SERVICES ========= */
     .services {
       max-width: 1100px;
       margin: auto;
@@ -116,12 +107,23 @@
         0 25px 45px rgba(0,0,0,0.3);
     }
 
-    /* ========== CONTACT ========== */
-    .contact {
+    /* ========= VISITOR INFO ========= */
+    .visitor-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       text-align: center;
     }
 
-    /* ========== GLOW LOCATION ========== */
+    .visitor-box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    /* ========= LOCATION ========= */
     .glow {
       margin-top: 30px;
       display: inline-flex;
@@ -140,7 +142,6 @@
       to { box-shadow: 0 0 30px #0d6efd; }
     }
 
-    /* ========== FOOTER ========== */
     footer {
       background: #050a14;
       text-align: center;
@@ -189,7 +190,7 @@
     <div class="card">
       <i class="fa-solid fa-shield-virus"></i>
       <h3>Software & Virus Issues</h3>
-      <p>Error fixing & system optimization</p>
+      <p>Error fixing & optimization</p>
     </div>
 
     <div class="card">
@@ -201,10 +202,19 @@
 </section>
 
 <section>
+  <h2>Visitor Information</h2>
+
+  <div class="visitor-box">
+    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
+    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
+    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
+  </div>
+</section>
+
+<section>
   <h2>Contact & Location</h2>
 
-  <div class="contact">
-
+  <div style="text-align:center;">
     <a href="tel:9810138985" class="btn btn-call">
       <i class="fa-solid fa-phone"></i> 9810138985
     </a>
@@ -217,13 +227,30 @@
       <i class="fa-solid fa-location-dot"></i>
       Near Boys Degree College, Udhampur
     </div>
-
   </div>
 </section>
 
 <footer>
   © 2026 Jamwal PC & Laptop Services
 </footer>
+
+<script>
+  // Visitor counter
+  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitCount").innerText = data.value;
+    });
+
+  // Visitor IP info
+  fetch("https://ipapi.co/json/")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("ip").innerText = data.ip;
+      document.getElementById("location").innerText =
+        data.city + ", " + data.country_name;
+    });
+</script>
 
 </body>
 </html>
