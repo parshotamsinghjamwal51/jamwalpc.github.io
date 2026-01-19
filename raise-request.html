@@ -8,6 +8,8 @@
 <style>
 :root{
   --accent:#1ec8ff;
+  --accent-soft:#9adfff;
+  --orange:#ff9f1c;
   --card:#2f4b55;
   --text:#eaf6fa;
   --muted:#b6d1d9;
@@ -22,7 +24,6 @@ html, body{
   font-family:"Segoe UI", Arial, sans-serif;
   color:var(--text);
 
-  /* SAME OVERLAY METHOD AS MAIN PAGE */
   background:
     linear-gradient(rgba(8,12,25,0.85), rgba(8,12,25,0.85)),
     url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
@@ -65,7 +66,7 @@ html, body{
 .page-title .value{
   margin-top:6px;
   font-size:13px;
-  color:#ff9f1c;
+  color:var(--orange);
   font-weight:600;
 }
 
@@ -111,6 +112,10 @@ input, textarea, select{
   font-size:14px;
 }
 
+input[type="date"]{
+  cursor:pointer;
+}
+
 textarea{resize:vertical}
 
 .tech-box{
@@ -119,7 +124,7 @@ textarea{resize:vertical}
   padding:22px;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== BUTTONS (PRO GLOW) ===== */
 .buttons{
   text-align:center;
   margin-top:34px;
@@ -127,26 +132,50 @@ textarea{resize:vertical}
 
 button{
   border:none;
-  font-weight:bold;
-  padding:13px 32px;
+  font-weight:600;
+  padding:14px 34px;
   border-radius:30px;
   margin:10px;
   cursor:pointer;
   font-size:15px;
+  transition:all .3s ease;
 }
 
-button.primary{
+/* SUBMIT */
+button.submit{
   background:var(--accent);
   color:#00313d;
+  box-shadow:0 0 18px rgba(30,200,255,.6);
+}
+button.submit:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 0 28px rgba(30,200,255,.9),
+    0 12px 30px rgba(0,0,0,.6);
 }
 
-button.secondary{
+/* PRINT */
+button.print{
   background:#b9e9f8;
   color:#00313d;
-  opacity:0.85;
+}
+button.print:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 18px rgba(185,233,248,.8);
 }
 
-button:hover{opacity:1}
+/* PDF */
+button.pdf{
+  background:var(--orange);
+  color:#2b1a00;
+  box-shadow:0 0 16px rgba(255,159,28,.6);
+}
+button.pdf:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 0 26px rgba(255,159,28,.9),
+    0 12px 30px rgba(0,0,0,.6);
+}
 
 /* FOOTER */
 footer{
@@ -158,65 +187,45 @@ footer{
 </style>
 
 <script>
-/* ===== AUTO DATE & TIME ===== */
 window.onload = function(){
-  // Set today's date
   const today = new Date();
   document.getElementById("date").value =
     today.toISOString().split("T")[0];
 
-  // Generate time dropdown (every 5 minutes)
   const timeSelect = document.getElementById("time");
   for(let h=0; h<24; h++){
     for(let m=0; m<60; m+=5){
       const hh = String(h).padStart(2,"0");
       const mm = String(m).padStart(2,"0");
-      const option = document.createElement("option");
-      option.value = `${hh}:${mm}:00`;
-      option.text = `${hh}:${mm}:00`;
-      timeSelect.appendChild(option);
+      const opt = document.createElement("option");
+      opt.value = `${hh}:${mm}:00`;
+      opt.text = `${hh}:${mm}:00`;
+      timeSelect.appendChild(opt);
     }
   }
 
-  // Auto-select current time (nearest 5 min)
-  const currentMinutes = today.getHours()*60 + today.getMinutes();
-  const rounded = Math.round(currentMinutes/5)*5;
-  const h = String(Math.floor(rounded/60)%24).padStart(2,"0");
-  const m = String(rounded%60).padStart(2,"0");
-  timeSelect.value = `${h}:${m}:00`;
+  const mins = today.getHours()*60 + today.getMinutes();
+  const r = Math.round(mins/5)*5;
+  timeSelect.value =
+    `${String(Math.floor(r/60)%24).padStart(2,"0")}:${String(r%60).padStart(2,"0")}:00`;
 };
 
-function printPage(){
-  window.print();
-}
-
 function submitRequest(){
-  const name = document.getElementById("name").value;
-  const location = document.getElementById("location").value;
-  const problems = document.getElementById("problems").value;
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-
-  const diagnosis = document.getElementById("diagnosis").value;
-  const status = document.getElementById("status").value;
-  const charges = document.getElementById("charges").value;
-  const collection = document.getElementById("collection").value;
-
   const message =
 `🔹 Service Request
 
-*Name:* ${name}
-*Location:* ${location}
-*Problems:* ${problems}
-*Preferred Date:* ${date}
-*Preferred Time:* ${time}
+*Name:* ${name.value}
+*Location:* ${location.value}
+*Problems:* ${problems.value}
+*Preferred Date:* ${date.value}
+*Preferred Time:* ${time.value}
 
-*Diagnosis:* ${diagnosis}
-*Status:* ${status}
-*Charges:* ₹${charges}
-*Collection Time:* ${collection}`;
+*Diagnosis:* ${diagnosis.value}
+*Status:* ${status.value}
+*Charges:* ₹${charges.value}
+*Collection Time:* ${collection.value}`;
 
-  window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+  window.open("https://wa.me/?text="+encodeURIComponent(message),"_blank");
 }
 </script>
 
@@ -237,10 +246,10 @@ function submitRequest(){
       <div class="section-title">Customer Details</div>
 
       <label>Name</label>
-      <input id="name" type="text">
+      <input id="name">
 
       <label>Location</label>
-      <input id="location" type="text">
+      <input id="location">
 
       <label>Problems</label>
       <textarea id="problems" rows="3"></textarea>
@@ -269,13 +278,13 @@ function submitRequest(){
       <input id="charges" type="number">
 
       <label>Collection Time</label>
-      <input id="collection" type="text">
+      <input id="collection">
     </div>
 
     <div class="buttons">
-      <button class="primary" onclick="submitRequest()">📤 Submit</button>
-      <button class="secondary" onclick="printPage()">🖨️ Print</button>
-      <button class="secondary" onclick="window.print()">📄 Download PDF</button>
+      <button class="submit" onclick="submitRequest()">📤 Submit</button>
+      <button class="print" onclick="window.print()">🖨️ Print</button>
+      <button class="pdf" onclick="window.print()">📄 Download PDF</button>
     </div>
 
   </div>
