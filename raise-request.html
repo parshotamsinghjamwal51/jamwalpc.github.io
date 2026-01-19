@@ -12,7 +12,6 @@
   --accent:#1ec8ff;
   --text:#eaf6fa;
   --muted:#b6d1d9;
-  --white:#ffffff;
 }
 
 *{box-sizing:border-box}
@@ -92,11 +91,10 @@ button{
   border-radius:30px;
   margin:10px;
   cursor:pointer;
+  font-size:15px;
 }
 
-button:hover{
-  opacity:.9;
-}
+button:hover{opacity:.9}
 
 footer{
   text-align:center;
@@ -109,6 +107,34 @@ footer{
 <script>
 function printPage(){
   window.print();
+}
+
+function submitRequest(){
+  const name = document.getElementById("name").value;
+  const location = document.getElementById("location").value;
+  const problem = document.getElementById("problem").value;
+  const time = document.getElementById("time").value;
+
+  const diagnosis = document.getElementById("diagnosis").value;
+  const status = document.getElementById("status").value;
+  const charge = document.getElementById("charge").value;
+  const collection = document.getElementById("collection").value;
+
+  let message =
+`🔹 Service Request
+
+Name: ${name}
+Location: ${location}
+Problem: ${problem}
+Preferred Time: ${time}
+
+Diagnosis: ${diagnosis}
+Status: ${status}
+Charge: ₹${charge}
+Collection: ${collection}`;
+
+  const url = "https://wa.me/?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
 }
 </script>
 
@@ -125,16 +151,16 @@ function printPage(){
       <div class="section-title">Customer Details</div>
 
       <label>Name</label>
-      <input type="text" placeholder="Enter customer name">
+      <input id="name" type="text">
 
       <label>Location</label>
-      <input type="text" placeholder="Enter location">
+      <input id="location" type="text">
 
       <label>Problem</label>
-      <textarea rows="3" placeholder="Describe the issue"></textarea>
+      <textarea id="problem" rows="3"></textarea>
 
       <label>Preferred Delivery Time</label>
-      <input type="text" placeholder="e.g. 10:00 AM">
+      <input id="time" type="text">
     </div>
 
     <!-- TECHNICIAN USE ONLY -->
@@ -142,26 +168,27 @@ function printPage(){
       <div class="section-title">🛠 Technician Use Only</div>
 
       <label>Diagnosis</label>
-      <textarea rows="3" placeholder="Technician diagnosis"></textarea>
+      <textarea id="diagnosis" rows="3"></textarea>
 
       <label>Issue Status</label>
-      <select>
+      <select id="status">
         <option>Pending</option>
         <option>In Progress</option>
         <option>Resolved</option>
       </select>
 
       <label>Charge (₹)</label>
-      <input type="number" placeholder="Enter amount">
+      <input id="charge" type="number">
 
       <label>Collection Date & Time</label>
-      <input type="text" placeholder="e.g. Today 6 PM">
+      <input id="collection" type="text">
     </div>
 
     <!-- ACTION BUTTONS -->
     <div class="buttons">
-      <button onclick="printPage()">🖨 Print</button>
-      <button>⬇ Download PDF</button>
+      <button onclick="submitRequest()">📤 Submit</button>
+      <button onclick="printPage()">🖨️ Print</button>
+      <button onclick="window.print()">📄 Download PDF</button>
     </div>
 
   </div>
