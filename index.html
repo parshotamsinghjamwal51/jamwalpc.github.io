@@ -1,231 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Jamwal PC & Laptop Services</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Jamwal PC & Laptop Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-<style>
-*{box-sizing:border-box}
+  <style>
+    * { box-sizing: border-box; }
 
-html,body{
-  margin:0;
-  padding:0;
-  font-family:"Segoe UI", Arial, sans-serif;
-}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0b1320;
+      color: #fff;
+    }
 
-/* ===== HEADER ===== */
-header{
-  padding:120px 20px 100px;
-  text-align:center;
-  color:#fff;
-  background:
-    linear-gradient(rgba(8,12,25,0.85), rgba(8,12,25,0.85)),
-    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
-  background-size:cover;
-  background-position:center;
-}
+    /* ========= HEADER ========= */
+    header {
+      padding: 110px 20px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(8,12,25,0.85), rgba(8,12,25,0.85)),
+        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
 
-header h1{
-  font-size:46px;
-  margin-bottom:12px;
-}
+    header h1 { font-size: 46px; }
+    header p { font-size: 18px; opacity: 0.9; }
 
-.subtitle{
-  font-size:18px;
-  opacity:0.9;
-}
+    /* ========= BUTTONS ========= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 10px;
+      padding: 14px 34px;
+      border-radius: 40px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
 
-.trust{
-  margin-top:14px;
-  font-size:15px;
-  color:#cfe7ff;
-}
+    .btn-call {
+      background: #0d6efd;
+    }
+    .btn-call:hover {
+      box-shadow: 0 0 30px #0d6efd;
+      transform: translateY(-3px);
+    }
 
-.value{
-  margin-top:6px;
-  font-size:15px;
-  font-weight:600;
-  color:#ff9f1c;
-}
+    .btn-whatsapp {
+      background: #25D366;
+      border-radius: 16px;
+    }
+    .btn-whatsapp:hover {
+      box-shadow: 0 0 30px #25D366;
+      transform: translateY(-3px);
+    }
 
-.home{
-  margin-top:10px;
-  font-weight:bold;
-}
+    /* ========= SECTIONS ========= */
+    section {
+      padding: 80px 20px;
+      background: #f4f7fb;
+      color: #111;
+    }
 
-/* ===== DESKTOP BUTTONS ===== */
-.actions{
-  margin-top:34px;
-}
+    h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 40px;
+    }
 
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin:10px;
-  padding:14px 36px;
-  border-radius:30px;
-  font-weight:600;
-  text-decoration:none;
-  color:#fff;
-  transition:0.3s ease;
-}
+    /* ========= SERVICES ========= */
+    .services {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
 
-.call{background:#0d6efd}
-.whatsapp{background:#25D366}
-.request{background:#1ec8ff;color:#00313d}
+    .card {
+      background: #fff;
+      padding: 35px 25px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: all 0.4s ease;
+    }
 
-.call:hover,
-.whatsapp:hover,
-.request:hover{
-  transform:translateY(-3px);
-}
+    .card i {
+      font-size: 38px;
+      color: #0d6efd;
+      margin-bottom: 15px;
+    }
 
-/* ===== SECTIONS ===== */
-section{
-  padding:80px 20px;
-  background:#f4f7fb;
-  color:#111;
-}
+    .card:hover {
+      transform: translateY(-14px);
+      box-shadow:
+        0 0 25px rgba(13,110,253,0.9),
+        0 25px 45px rgba(0,0,0,0.3);
+    }
 
-/* extra spacing before footer so it never feels cut */
-section:last-of-type{
-  padding-bottom:120px;
-}
+    /* ========= VISITOR INFO ========= */
+    .visitor-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      text-align: center;
+    }
 
-h2{
-  text-align:center;
-  font-size:34px;
-  margin-bottom:40px;
-}
+    .visitor-box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
 
-/* ===== SERVICES ===== */
-.services{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:30px;
-}
+    /* ========= LOCATION ========= */
+    .glow {
+      margin-top: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 30px;
+      background: #0d6efd;
+      color: #fff;
+      font-weight: bold;
+      animation: glow 1.5s infinite alternate;
+    }
 
-.card{
-  background:#fff;
-  padding:35px 25px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.15);
-}
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #0d6efd; }
+      to { box-shadow: 0 0 30px #0d6efd; }
+    }
 
-/* ===== FOOTER (FIXED VISIBILITY) ===== */
-footer{
-  background:#050a14;
-  text-align:center;
-  padding:28px 20px;
-  font-size:14px;
-  color:#cfe7ff;
-  border-top:3px solid #1ec8ff; /* visual separation */
-}
+    footer {
+      background: #050a14;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
 
-/* =================================================
-   MOBILE STICKY CONTACT BAR (UNCHANGED)
-================================================= */
-.mobile-bar{
-  display:none;
-}
+    /* ========= MOBILE STICKY BAR (ONLY MOBILE) ========= */
+    .mobile-bar {
+      display: none;
+    }
 
-@media (max-width:768px){
-  .mobile-bar{
-    display:flex;
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    z-index:9999;
-    box-shadow:0 -5px 20px rgba(0,0,0,0.6);
-  }
+    @media (max-width: 768px) {
+      body { padding-bottom: 70px; }
 
-  .mobile-bar a{
-    flex:1;
-    text-align:center;
-    padding:16px 0;
-    font-weight:700;
-    text-decoration:none;
-    color:#fff;
-    font-size:16px;
-  }
+      .mobile-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #050a14;
+        border-top: 1px solid #111;
+        z-index: 9999;
+      }
 
-  .mobile-call{
-    background:#0d6efd;
-  }
+      .mobile-bar a {
+        flex: 1;
+        text-align: center;
+        padding: 14px 0;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
 
-  .mobile-whatsapp{
-    background:#25D366;
-  }
+      .mobile-call {
+        background: #0d6efd;
+      }
 
-  body{
-    padding-bottom:70px;
-  }
-}
-</style>
+      .mobile-whatsapp {
+        background: #25D366;
+      }
+
+      .mobile-bar i {
+        margin-right: 6px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
   <h1>Jamwal PC & Laptop Services</h1>
+  <p>System Diagnosis • Linux / Windows Installation • Software Solutions</p>
+  <p><strong>Home Visit Available – Udhampur</strong></p>
 
-  <div class="subtitle">
-    System Diagnosis • Linux / Windows Installation • Software Solutions
-  </div>
+  <a href="tel:9810138985" class="btn btn-call">
+    <i class="fa-solid fa-phone"></i> Call Now
+  </a>
 
-  <div class="trust">
-    Expert Diagnosis • Fast Service • Honest Pricing
-  </div>
+  <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+  </a>
 
-  <div class="value">
-    Essential Software Installation Included
-  </div>
-
-  <div class="home">
-    Home Visit Available – Udhampur
-  </div>
-
-  <div class="actions">
-    <a href="tel:9810138985" class="btn call">
-      <i class="fa-solid fa-phone"></i> Call Now
-    </a>
-
-    <a href="https://wa.me/919810138985" class="btn whatsapp" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
-
-    <a href="raise-request.html" class="btn request">
-      <i class="fa-solid fa-file-circle-plus"></i> Raise Request
-    </a>
-  </div>
+  <a href="raise-request.html" class="btn btn-call" target="_blank">
+    <i class="fa-solid fa-file-circle-plus"></i> Raise Request
+  </a>
 </header>
 
 <section>
   <h2>Our Services</h2>
+
   <div class="services">
     <div class="card">
+      <i class="fa-solid fa-laptop-code"></i>
       <h3>System Diagnosis</h3>
-      <p>Accurate issue detection</p>
+      <p>Accurate issue detection & analysis</p>
     </div>
+
     <div class="card">
-      <h3>OS Installation</h3>
-      <p>Windows & Linux</p>
+      <i class="fa-brands fa-linux"></i>
+      <h3>Linux / Windows Installation</h3>
+      <p>Clean OS install & setup</p>
     </div>
+
     <div class="card">
-      <h3>Software Issues</h3>
-      <p>Errors & optimization</p>
+      <i class="fa-solid fa-shield-virus"></i>
+      <h3>Software & Virus Issues</h3>
+      <p>Error fixing & optimization</p>
     </div>
+
     <div class="card">
-      <h3>Network Setup</h3>
-      <p>Wi-Fi & LAN</p>
+      <i class="fa-solid fa-network-wired"></i>
+      <h3>Internet & Network Setup</h3>
+      <p>Wi-Fi & LAN configuration</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Visitor Information</h2>
+
+  <div class="visitor-box">
+    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
+    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
+    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
+  </div>
+</section>
+
+<section>
+  <h2>Contact & Location</h2>
+
+  <div style="text-align:center;">
+    <a href="tel:9810138985" class="btn btn-call">
+      <i class="fa-solid fa-phone"></i> 9810138985
+    </a>
+
+    <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+
+    <div class="glow">
+      <i class="fa-solid fa-location-dot"></i>
+      Near Boys Degree College, Udhampur
     </div>
   </div>
 </section>
@@ -234,15 +275,31 @@ footer{
   © 2026 Jamwal PC & Laptop Services
 </footer>
 
-<!-- MOBILE STICKY BAR -->
+<!-- MOBILE BAR -->
 <div class="mobile-bar">
   <a href="tel:9810138985" class="mobile-call">
     <i class="fa-solid fa-phone"></i> Call
   </a>
-  <a href="https://wa.me/919810138985" class="mobile-whatsapp" target="_blank">
+  <a href="https://wa.me/919810138985" class="mobile-whatsapp">
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 </div>
+
+<script>
+  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitCount").innerText = data.value;
+    });
+
+  fetch("https://ipapi.co/json/")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("ip").innerText = data.ip;
+      document.getElementById("location").innerText =
+        data.city + ", " + data.country_name;
+    });
+</script>
 
 </body>
 </html>
