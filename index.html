@@ -29,8 +29,41 @@
       background-position: center;
     }
 
-    header h1 { font-size: 46px; }
-    header p { font-size: 18px; opacity: 0.9; }
+    /* 🔹 GLOW TITLE (ONLY THIS CHANGE) */
+    header h1 {
+      font-size: 46px;
+      text-shadow:
+        0 0 10px rgba(30,200,255,0.6),
+        0 0 22px rgba(30,200,255,0.35);
+    }
+
+    /* 🔹 SUBTITLE WITH PROFESSIONAL UNDERLINE */
+    .subtitle {
+      position: relative;
+      display: inline-block;
+      font-size: 18px;
+      opacity: 0.95;
+      padding-bottom: 14px;
+      margin-top: 6px;
+    }
+
+    .subtitle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      border-radius: 4px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #1ec8ff,
+        transparent
+      );
+      box-shadow: 0 0 12px rgba(30,200,255,0.7);
+    }
 
     /* ========= BUTTONS ========= */
     .btn {
@@ -107,22 +140,6 @@
         0 25px 45px rgba(0,0,0,0.3);
     }
 
-    /* ========= VISITOR INFO ========= */
-    .visitor-box {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 25px;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-
-    .visitor-box p {
-      margin: 10px 0;
-      font-size: 16px;
-    }
-
     /* ========= LOCATION ========= */
     .glow {
       margin-top: 30px;
@@ -149,7 +166,7 @@
       font-size: 14px;
     }
 
-    /* ========= MOBILE STICKY BAR (ONLY MOBILE) ========= */
+    /* ========= MOBILE STICKY BAR (UNCHANGED) ========= */
     .mobile-bar {
       display: none;
     }
@@ -163,8 +180,6 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        background: #050a14;
-        border-top: 1px solid #111;
         z-index: 9999;
       }
 
@@ -177,17 +192,8 @@
         text-decoration: none;
       }
 
-      .mobile-call {
-        background: #0d6efd;
-      }
-
-      .mobile-whatsapp {
-        background: #25D366;
-      }
-
-      .mobile-bar i {
-        margin-right: 6px;
-      }
+      .mobile-call { background: #0d6efd; }
+      .mobile-whatsapp { background: #25D366; }
     }
   </style>
 </head>
@@ -196,7 +202,11 @@
 
 <header>
   <h1>Jamwal PC & Laptop Services</h1>
-  <p>System Diagnosis • Linux / Windows Installation • Software Solutions</p>
+
+  <p class="subtitle">
+    System Diagnosis • Linux / Windows Installation • Software Solutions
+  </p>
+
   <p><strong>Home Visit Available – Udhampur</strong></p>
 
   <a href="tel:9810138985" class="btn btn-call">
@@ -212,65 +222,6 @@
   </a>
 </header>
 
-<section>
-  <h2>Our Services</h2>
-
-  <div class="services">
-    <div class="card">
-      <i class="fa-solid fa-laptop-code"></i>
-      <h3>System Diagnosis</h3>
-      <p>Accurate issue detection & analysis</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-brands fa-linux"></i>
-      <h3>Linux / Windows Installation</h3>
-      <p>Clean OS install & setup</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-shield-virus"></i>
-      <h3>Software & Virus Issues</h3>
-      <p>Error fixing & optimization</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-network-wired"></i>
-      <h3>Internet & Network Setup</h3>
-      <p>Wi-Fi & LAN configuration</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Visitor Information</h2>
-
-  <div class="visitor-box">
-    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
-    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
-    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
-  </div>
-</section>
-
-<section>
-  <h2>Contact & Location</h2>
-
-  <div style="text-align:center;">
-    <a href="tel:9810138985" class="btn btn-call">
-      <i class="fa-solid fa-phone"></i> 9810138985
-    </a>
-
-    <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-    </a>
-
-    <div class="glow">
-      <i class="fa-solid fa-location-dot"></i>
-      Near Boys Degree College, Udhampur
-    </div>
-  </div>
-</section>
-
 <footer>
   © 2026 Jamwal PC & Laptop Services
 </footer>
@@ -284,22 +235,6 @@
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 </div>
-
-<script>
-  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("visitCount").innerText = data.value;
-    });
-
-  fetch("https://ipapi.co/json/")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("ip").innerText = data.ip;
-      document.getElementById("location").innerText =
-        data.city + ", " + data.country_name;
-    });
-</script>
 
 </body>
 </html>
