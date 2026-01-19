@@ -8,7 +8,7 @@
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-  <!-- PDF Library -->
+  <!-- PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
@@ -105,6 +105,24 @@
       border: 2px dashed #00c6ff;
     }
 
+    .submit-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 40px;
+      background: #25D366;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    .submit-btn:hover {
+      box-shadow: 0 0 30px #25D366;
+      transform: translateY(-2px);
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -112,20 +130,10 @@
       opacity: 0.8;
     }
 
-    /* PRINT STYLE */
     @media print {
-      body {
-        background: #fff;
-        color: #000;
-      }
-      .actions {
-        display: none;
-      }
-      .card {
-        background: #fff;
-        box-shadow: none;
-        border: 1px solid #000;
-      }
+      body { background: #fff; color: #000; }
+      .actions, .submit-btn { display: none; }
+      .card { background: #fff; box-shadow: none; border: 1px solid #000; }
     }
   </style>
 </head>
@@ -137,7 +145,7 @@
   <p>Jamwal PC & Laptop Services</p>
 </header>
 
-<!-- TOP ACTION BUTTONS -->
+<!-- TOP ACTIONS -->
 <div class="actions">
   <button class="action-btn" onclick="window.print()">
     <i class="fa-solid fa-print"></i> Print
@@ -150,43 +158,43 @@
 
 <div class="container" id="requestForm">
 
-  <!-- CUSTOMER SECTION -->
+  <!-- CUSTOMER -->
   <div class="card">
     <h2><i class="fa-solid fa-user"></i> Customer Details</h2>
 
     <div class="field">
       <label>Name</label>
-      <input type="text">
+      <input type="text" id="name">
     </div>
 
     <div class="field">
       <label>Location</label>
-      <input type="text">
+      <input type="text" id="location">
     </div>
 
     <div class="field">
       <label>Problem Description</label>
-      <textarea></textarea>
+      <textarea id="problem"></textarea>
     </div>
 
     <div class="field">
       <label>Preferred Delivery Time</label>
-      <input type="text">
+      <input type="text" id="time">
     </div>
   </div>
 
-  <!-- ADMIN SECTION -->
+  <!-- ADMIN -->
   <div class="card admin">
     <h2><i class="fa-solid fa-screwdriver-wrench"></i> Technician Use Only</h2>
 
     <div class="field">
       <label>Diagnosis</label>
-      <textarea></textarea>
+      <textarea id="diagnosis"></textarea>
     </div>
 
     <div class="field">
       <label>Issue Status</label>
-      <select>
+      <select id="status">
         <option>Resolved</option>
         <option>Not Resolved</option>
         <option>Pending</option>
@@ -195,18 +203,24 @@
 
     <div class="field">
       <label>Charge (₹)</label>
-      <input type="number">
+      <input type="number" id="charge">
     </div>
 
     <div class="field">
       <label>Collection Date & Time</label>
-      <input type="text">
+      <input type="text" id="collection">
     </div>
+  </div>
+
+  <div style="text-align:center;">
+    <button class="submit-btn" onclick="sendWhatsApp()">
+      <i class="fa-brands fa-whatsapp"></i> Submit & Notify on WhatsApp
+    </button>
   </div>
 
 </div>
 
-<!-- BOTTOM ACTION BUTTONS -->
+<!-- BOTTOM ACTIONS -->
 <div class="actions">
   <button class="action-btn" onclick="window.print()">
     <i class="fa-solid fa-print"></i> Print
@@ -222,6 +236,24 @@
 </footer>
 
 <script>
+  function sendWhatsApp() {
+    const msg =
+      "📝 *Service Request*\n\n" +
+      "*Name:* " + document.getElementById("name").value + "\n" +
+      "*Location:* " + document.getElementById("location").value + "\n" +
+      "*Problem:* " + document.getElementById("problem").value + "\n" +
+      "*Preferred Time:* " + document.getElementById("time").value + "\n\n" +
+      "*Diagnosis:* " + document.getElementById("diagnosis").value + "\n" +
+      "*Status:* " + document.getElementById("status").value + "\n" +
+      "*Charge:* ₹" + document.getElementById("charge").value + "\n" +
+      "*Collection:* " + document.getElementById("collection").value;
+
+    const url =
+      "https://wa.me/919810138985?text=" + encodeURIComponent(msg);
+
+    window.open(url, "_blank");
+  }
+
   function downloadPDF() {
     const element = document.getElementById("requestForm");
     html2pdf().from(element).save("service-request.pdf");
