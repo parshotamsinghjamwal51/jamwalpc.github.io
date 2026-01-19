@@ -19,54 +19,57 @@ html, body{
   margin:0;
   padding:0;
   min-height:100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   color:var(--text);
 
-  /* FULL PAGE BACKGROUND IMAGE */
-  background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
+  /* SAME OVERLAY METHOD AS MAIN PAGE */
+  background:
+    linear-gradient(rgba(8,12,25,0.85), rgba(8,12,25,0.85)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
 }
 
-/* DARK OVERLAY */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.7);
-  z-index:-1;
-}
-
-/* PAGE TITLE */
+/* ===== TITLE ===== */
 .page-title{
   text-align:center;
-  padding:70px 20px 30px;
+  padding:80px 20px 40px;
 }
 
 .page-title h1{
   margin:0;
   font-size:38px;
   color:#ffffff;
-  text-shadow:0 4px 15px rgba(0,0,0,0.9);
+  text-shadow:0 4px 18px rgba(0,0,0,0.9);
 }
 
-/* 🔥 GLOWING BUSINESS NAME */
 .page-title .brand{
-  margin-top:12px;
-  font-size:26px;
+  margin-top:14px;
+  font-size:28px;
   font-weight:bold;
-  letter-spacing:1.5px;
+  letter-spacing:1.6px;
   color:var(--accent);
-
   text-shadow:
-    0 0 5px rgba(30,200,255,0.6),
-    0 0 15px rgba(30,200,255,0.6),
-    0 0 30px rgba(30,200,255,0.4),
-    0 4px 20px rgba(0,0,0,0.9);
+    0 0 6px rgba(30,200,255,0.5),
+    0 0 18px rgba(30,200,255,0.4),
+    0 4px 22px rgba(0,0,0,0.9);
 }
 
-/* FORM CONTAINER */
+.page-title .trust{
+  margin-top:14px;
+  font-size:14px;
+  color:#d6f3ff;
+}
+
+.page-title .value{
+  margin-top:6px;
+  font-size:13px;
+  color:#ff9f1c;
+  font-weight:600;
+}
+
+/* ===== FORM ===== */
 .container{
   max-width:900px;
   margin:10px auto 40px;
@@ -75,27 +78,26 @@ body::before{
 
 .card{
   background:var(--card);
-  border-radius:14px;
-  padding:30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  border-radius:16px;
+  padding:32px;
+  box-shadow:0 12px 32px rgba(0,0,0,.45);
 }
 
-/* SECTIONS */
 .section{
-  margin-bottom:35px;
+  margin-bottom:38px;
 }
 
 .section-title{
   font-weight:bold;
   color:var(--accent);
-  margin-bottom:15px;
+  margin-bottom:18px;
   border-bottom:2px solid var(--accent);
   padding-bottom:8px;
 }
 
 label{
   display:block;
-  margin:15px 0 6px;
+  margin:18px 0 6px;
   font-size:14px;
   color:var(--muted);
 }
@@ -113,29 +115,38 @@ textarea{resize:vertical}
 
 .tech-box{
   border:2px dashed var(--accent);
-  border-radius:12px;
-  padding:20px;
+  border-radius:14px;
+  padding:22px;
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .buttons{
   text-align:center;
-  margin-top:30px;
+  margin-top:34px;
 }
 
 button{
-  background:var(--accent);
   border:none;
-  color:#00313d;
   font-weight:bold;
-  padding:12px 30px;
+  padding:13px 32px;
   border-radius:30px;
   margin:10px;
   cursor:pointer;
   font-size:15px;
 }
 
-button:hover{opacity:0.9}
+button.primary{
+  background:var(--accent);
+  color:#00313d;
+}
+
+button.secondary{
+  background:#b9e9f8;
+  color:#00313d;
+  opacity:0.85;
+}
+
+button:hover{opacity:1}
 
 /* FOOTER */
 footer{
@@ -182,13 +193,13 @@ function submitRequest(){
 </head>
 <body>
 
-<!-- TITLE -->
 <div class="page-title">
   <h1>Raise Service Request</h1>
   <div class="brand">Jamwal PC & Laptop Services</div>
+  <div class="trust">Expert Diagnosis • Fast Service • Honest Pricing</div>
+  <div class="value">Essential Software Installation Included</div>
 </div>
 
-<!-- FORM -->
 <div class="container">
   <div class="card">
 
@@ -229,9 +240,9 @@ function submitRequest(){
     </div>
 
     <div class="buttons">
-      <button onclick="submitRequest()">📤 Submit</button>
-      <button onclick="printPage()">🖨️ Print</button>
-      <button onclick="window.print()">📄 Download PDF</button>
+      <button class="primary" onclick="submitRequest()">📤 Submit</button>
+      <button class="secondary" onclick="printPage()">🖨️ Print</button>
+      <button class="secondary" onclick="window.print()">📄 Download PDF</button>
     </div>
 
   </div>
