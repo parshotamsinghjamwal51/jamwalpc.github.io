@@ -1,169 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jamwal PC & Laptop Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Jamwal PC & Laptop Services</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font Awesome 6 -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #0b1320;
-      color: #fff;
-    }
+html,body{
+  margin:0;
+  padding:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:#0b1320;
+  color:#fff;
+  overflow-y:auto;
+}
 
-    /* ========= HEADER ========= */
-    header {
-      padding: 110px 20px;
-      text-align: center;
-      background:
-        linear-gradient(rgba(8,12,25,0.88), rgba(8,12,25,0.88)),
-        url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-    }
+/* ===== HEADER ===== */
+header{
+  padding:100px 20px 90px;
+  text-align:center;
+  background:
+    linear-gradient(rgba(8,12,25,0.88), rgba(8,12,25,0.88)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+}
 
-    /* LOGO IMAGE WITH BLACK GLOW */
-    .logo-wrap{
-      display:flex;
-      justify-content:center;
-      margin-bottom:18px;
-    }
+/* LOGO */
+.logo-box{
+  display:flex;
+  justify-content:center;
+  margin-bottom:18px;
+}
 
-    .logo-wrap img{
-      width:130px;
-      height:auto;
-      border-radius:50%;
-      padding:12px;
-      background:radial-gradient(circle, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.1) 70%);
-      box-shadow:
-        0 0 25px rgba(0,0,0,0.9),
-        0 0 45px rgba(0,0,0,0.8),
-        0 12px 40px rgba(0,0,0,0.95);
-    }
+.logo-box img{
+  width:120px;
+  height:auto;
+  border-radius:50%;
+  padding:10px;
+  background:radial-gradient(circle, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.2) 70%);
+  box-shadow:
+    0 0 25px rgba(0,0,0,0.9),
+    0 0 45px rgba(0,0,0,0.8);
+}
 
-    header h1 {
-      font-size: 46px;
-      margin: 10px 0 6px;
-    }
+/* TEXT */
+header h1{
+  font-size:44px;
+  margin:10px 0;
+}
 
-    header p {
-      font-size: 18px;
-      opacity: 0.9;
-      margin: 6px 0;
-    }
+.subtitle{
+  font-size:17px;
+  opacity:0.9;
+}
 
-    .trust-line{
-      margin-top: 14px;
-      font-size: 16px;
-      color: #cfe7ff;
-      font-weight: 500;
-    }
+.trust{
+  margin-top:12px;
+  font-size:15px;
+  color:#cfe7ff;
+}
 
-    .value-line{
-      margin-top: 6px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #ff9f1c;
-      text-shadow:
-        0 0 6px rgba(255,159,28,0.6),
-        0 0 14px rgba(255,159,28,0.4),
-        0 4px 18px rgba(0,0,0,0.9);
-    }
+.value{
+  margin-top:6px;
+  font-size:15px;
+  font-weight:600;
+  color:#ff9f1c;
+  text-shadow:
+    0 0 6px rgba(255,159,28,0.6),
+    0 0 14px rgba(255,159,28,0.4);
+}
 
-    /* ========= BUTTONS ========= */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 18px 10px;
-      padding: 14px 34px;
-      border-radius: 40px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #fff;
-      transition: 0.3s;
-    }
+.home{
+  margin-top:8px;
+  font-weight:bold;
+}
 
-    .btn-call {
-      background: #0d6efd;
-    }
-    .btn-call:hover {
-      box-shadow: 0 0 30px #0d6efd;
-      transform: translateY(-3px);
-    }
+/* BUTTONS */
+.actions{
+  margin-top:30px;
+}
 
-    .btn-whatsapp {
-      background: #25D366;
-      border-radius: 16px;
-    }
-    .btn-whatsapp:hover {
-      box-shadow: 0 0 30px #25D366;
-      transform: translateY(-3px);
-    }
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin:10px;
+  padding:14px 34px;
+  border-radius:30px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#fff;
+  transition:.3s;
+}
 
-    section {
-      padding: 80px 20px;
-      background: #f4f7fb;
-      color: #111;
-    }
+.call{background:#0d6efd}
+.call:hover{box-shadow:0 0 28px #0d6efd; transform:translateY(-3px)}
 
-    h2 {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 40px;
-    }
+.whatsapp{background:#25D366}
+.whatsapp:hover{box-shadow:0 0 28px #25D366; transform:translateY(-3px)}
 
-    footer {
-      background: #050a14;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-  </style>
+.request{background:#1ec8ff; color:#00313d}
+.request:hover{box-shadow:0 0 30px rgba(30,200,255,.9); transform:translateY(-3px)}
+
+/* SECTIONS */
+section{
+  padding:80px 20px;
+  background:#f4f7fb;
+  color:#111;
+}
+
+section h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:40px;
+}
+
+footer{
+  background:#050a14;
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
-  <!-- LOGO IMAGE -->
-  <div class="logo-wrap">
-    <img src="data:image/jpeg;base64,REPLACE_BASE64_HERE" alt="Jamwal Logo">
+  <div class="logo-box">
+    <img src="logo.png" alt="Jamwal Logo">
   </div>
 
   <h1>Jamwal PC & Laptop Services</h1>
 
-  <p>System Diagnosis • Linux / Windows Installation • Software Solutions</p>
+  <div class="subtitle">
+    System Diagnosis • Linux / Windows Installation • Software Solutions
+  </div>
 
-  <div class="trust-line">
+  <div class="trust">
     Expert Diagnosis • Fast Service • Honest Pricing
   </div>
 
-  <div class="value-line">
+  <div class="value">
     Essential Software Installation Included
   </div>
 
-  <p><strong>Home Visit Available – Udhampur</strong></p>
+  <div class="home">
+    Home Visit Available – Udhampur
+  </div>
 
-  <a href="tel:9810138985" class="btn btn-call">
-    <i class="fa-solid fa-phone"></i> Call Now
-  </a>
+  <div class="actions">
+    <a href="tel:9810138985" class="btn call">
+      <i class="fa-solid fa-phone"></i> Call Now
+    </a>
 
-  <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
-    <i class="fa-brands fa-whatsapp"></i> WhatsApp
-  </a>
+    <a href="https://wa.me/919810138985" class="btn whatsapp" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
 
-  <a href="raise-request.html" class="btn btn-call" target="_blank">
-    <i class="fa-solid fa-file-circle-plus"></i> Raise Request
-  </a>
+    <a href="raise-request.html" class="btn request">
+      <i class="fa-solid fa-file-circle-plus"></i> Raise Request
+    </a>
+  </div>
 </header>
+
+<section>
+  <h2>Our Services</h2>
+  <!-- your existing services content stays here -->
+</section>
 
 <footer>
   © 2026 Jamwal PC & Laptop Services
