@@ -3,104 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Service Request | Jamwal PC & Laptop Services</title>
+<title>Raise Service Request</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 20px;
+:root{
+  --bg:#0f2a33;
+  --card:#2f4b55;
+  --accent:#1ec8ff;
+  --text:#eaf6fa;
+  --muted:#b6d1d9;
+  --white:#ffffff;
 }
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
-h2 {
-    text-align: center;
-    color: #222;
+
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
 }
-.section-title {
-    margin-top: 25px;
-    font-weight: bold;
-    color: #0a58ca;
-    border-bottom: 2px solid #0a58ca;
-    padding-bottom: 5px;
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  padding:30px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
-label {
-    display: block;
-    margin-top: 12px;
-    font-weight: 600;
+
+h1{
+  text-align:center;
+  margin-bottom:30px;
 }
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+
+.section{
+  margin-bottom:35px;
 }
-textarea {
-    resize: vertical;
+
+.section-title{
+  font-weight:bold;
+  color:var(--accent);
+  margin-bottom:15px;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:8px;
 }
-.note {
-    font-size: 13px;
-    color: #555;
-    margin-top: 10px;
+
+label{
+  display:block;
+  margin:15px 0 6px;
+  font-size:14px;
+  color:var(--muted);
 }
-.footer {
-    text-align: center;
-    font-size: 13px;
-    margin-top: 25px;
-    color: #777;
+
+input, textarea, select{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  font-size:14px;
+}
+
+textarea{resize:vertical}
+
+.tech-box{
+  border:2px dashed var(--accent);
+  border-radius:12px;
+  padding:20px;
+}
+
+.buttons{
+  text-align:center;
+  margin-top:30px;
+}
+
+button{
+  background:var(--accent);
+  border:none;
+  color:#00313d;
+  font-weight:bold;
+  padding:12px 28px;
+  border-radius:30px;
+  margin:10px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+footer{
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:40px;
 }
 </style>
-</head>
 
+<script>
+function printPage(){
+  window.print();
+}
+</script>
+
+</head>
 <body>
 
 <div class="container">
-    <h2>Service Request</h2>
+  <div class="card">
 
-    <!-- CUSTOMER SECTION -->
-    <div class="section-title">Customer Details</div>
+    <h1>Service Request</h1>
 
-    <label>Name</label>
-    <input type="text" placeholder="Enter your name">
+    <!-- CUSTOMER DETAILS -->
+    <div class="section">
+      <div class="section-title">Customer Details</div>
 
-    <label>Location</label>
-    <input type="text" placeholder="Enter your location">
+      <label>Name</label>
+      <input type="text" placeholder="Enter customer name">
 
-    <label>Problem</label>
-    <textarea rows="3" placeholder="Describe the issue"></textarea>
+      <label>Location</label>
+      <input type="text" placeholder="Enter location">
 
-    <label>Preferred Time</label>
-    <input type="text" placeholder="e.g. 10 AM – 12 PM">
+      <label>Problem</label>
+      <textarea rows="3" placeholder="Describe the issue"></textarea>
 
-    <p class="note">Please submit only the above details. Service updates will be shared separately.</p>
-
-    <!-- TECHNICIAN SECTION -->
-    <div class="section-title">Service Update (Office Use Only)</div>
-
-    <label>Diagnosis</label>
-    <input type="text" placeholder="Technician diagnosis">
-
-    <label>Status</label>
-    <input type="text" placeholder="Pending / In Progress / Resolved">
-
-    <label>Charge (₹)</label>
-    <input type="text" placeholder="Enter amount">
-
-    <label>Collection Time</label>
-    <input type="text" placeholder="Device collection time">
-
-    <div class="footer">
-        Jamwal PC & Laptop Services<br>
-        Professional & Reliable Support
+      <label>Preferred Delivery Time</label>
+      <input type="text" placeholder="e.g. 10:00 AM">
     </div>
+
+    <!-- TECHNICIAN USE ONLY -->
+    <div class="section tech-box">
+      <div class="section-title">🛠 Technician Use Only</div>
+
+      <label>Diagnosis</label>
+      <textarea rows="3" placeholder="Technician diagnosis"></textarea>
+
+      <label>Issue Status</label>
+      <select>
+        <option>Pending</option>
+        <option>In Progress</option>
+        <option>Resolved</option>
+      </select>
+
+      <label>Charge (₹)</label>
+      <input type="number" placeholder="Enter amount">
+
+      <label>Collection Date & Time</label>
+      <input type="text" placeholder="e.g. Today 6 PM">
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="buttons">
+      <button onclick="printPage()">🖨 Print</button>
+      <button>⬇ Download PDF</button>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Jamwal PC & Laptop Services<br>
+    Professional & Reliable Support
+  </footer>
 </div>
 
 </body>
