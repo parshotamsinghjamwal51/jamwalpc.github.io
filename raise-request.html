@@ -19,7 +19,7 @@ html, body{
   margin:0;
   padding:0;
   min-height:100%;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family:"Segoe UI", Arial, sans-serif;
   color:var(--text);
 
   /* SAME OVERLAY METHOD AS MAIN PAGE */
@@ -158,6 +158,34 @@ footer{
 </style>
 
 <script>
+/* ===== AUTO DATE & TIME ===== */
+window.onload = function(){
+  // Set today's date
+  const today = new Date();
+  document.getElementById("date").value =
+    today.toISOString().split("T")[0];
+
+  // Generate time dropdown (every 5 minutes)
+  const timeSelect = document.getElementById("time");
+  for(let h=0; h<24; h++){
+    for(let m=0; m<60; m+=5){
+      const hh = String(h).padStart(2,"0");
+      const mm = String(m).padStart(2,"0");
+      const option = document.createElement("option");
+      option.value = `${hh}:${mm}:00`;
+      option.text = `${hh}:${mm}:00`;
+      timeSelect.appendChild(option);
+    }
+  }
+
+  // Auto-select current time (nearest 5 min)
+  const currentMinutes = today.getHours()*60 + today.getMinutes();
+  const rounded = Math.round(currentMinutes/5)*5;
+  const h = String(Math.floor(rounded/60)%24).padStart(2,"0");
+  const m = String(rounded%60).padStart(2,"0");
+  timeSelect.value = `${h}:${m}:00`;
+};
+
 function printPage(){
   window.print();
 }
@@ -166,6 +194,7 @@ function submitRequest(){
   const name = document.getElementById("name").value;
   const location = document.getElementById("location").value;
   const problems = document.getElementById("problems").value;
+  const date = document.getElementById("date").value;
   const time = document.getElementById("time").value;
 
   const diagnosis = document.getElementById("diagnosis").value;
@@ -179,6 +208,7 @@ function submitRequest(){
 *Name:* ${name}
 *Location:* ${location}
 *Problems:* ${problems}
+*Preferred Date:* ${date}
 *Preferred Time:* ${time}
 
 *Diagnosis:* ${diagnosis}
@@ -215,8 +245,11 @@ function submitRequest(){
       <label>Problems</label>
       <textarea id="problems" rows="3"></textarea>
 
+      <label>Preferred Date</label>
+      <input id="date" type="date">
+
       <label>Preferred Time</label>
-      <input id="time" type="text">
+      <select id="time"></select>
     </div>
 
     <div class="section tech-box">
