@@ -5,20 +5,21 @@
   <title>Jamwal PC & Laptop Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Font Awesome Latest Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #141e30, #243b55);
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
     }
 
     header {
-      padding: 80px 20px;
+      padding: 90px 20px;
       text-align: center;
     }
 
@@ -35,15 +36,17 @@
     .btn {
       display: inline-block;
       margin: 15px 10px;
-      padding: 14px 32px;
+      padding: 14px 34px;
       background: #00c6ff;
       color: #000;
       border-radius: 40px;
       font-weight: bold;
       text-decoration: none;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .btn i {
+      margin-right: 8px;
     }
 
     .btn:hover {
@@ -52,70 +55,43 @@
       box-shadow: 0 0 25px rgba(0,198,255,0.9);
     }
 
-    .btn::after {
-      content: " →";
-      opacity: 0;
-      transition: 0.3s;
-    }
-
-    .btn:hover::after {
-      opacity: 1;
-    }
-
     section {
-      padding: 60px 20px;
-      background: #f5f7fa;
+      padding: 70px 20px;
+      background: #f4f6f8;
       color: #222;
     }
 
     h2 {
       text-align: center;
       font-size: 34px;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
 
     .services {
       max-width: 1100px;
       margin: auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 25px;
     }
 
     .card {
-      background: #ffffff;
+      background: #fff;
       padding: 30px;
       border-radius: 18px;
       text-align: center;
-      font-size: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transition: all 0.35s ease;
-      position: relative;
-      overflow: hidden;
+      transition: 0.35s;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(0,198,255,0.35),
-        transparent
-      );
-      transition: 0.6s;
-    }
-
-    .card:hover::before {
-      left: 100%;
+    .card i {
+      font-size: 36px;
+      color: #0b5ed7;
+      margin-bottom: 15px;
     }
 
     .card:hover {
-      transform: translateY(-12px) scale(1.04);
+      transform: translateY(-12px);
       box-shadow: 0 25px 45px rgba(0,0,0,0.25);
     }
 
@@ -124,16 +100,40 @@
     }
 
     .contact a {
-      display: block;
-      margin: 15px auto;
+      display: inline-block;
+      margin: 15px;
       font-size: 20px;
-      color: #00c6ff;
+      color: #0b5ed7;
       text-decoration: none;
       transition: 0.3s;
     }
 
+    .contact a i {
+      margin-right: 10px;
+    }
+
     .contact a:hover {
       color: #000;
+    }
+
+    .glow {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 22px;
+      border-radius: 30px;
+      background: #0b5ed7;
+      color: #fff;
+      font-weight: bold;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #0b5ed7;
+      }
+      to {
+        box-shadow: 0 0 25px #00c6ff;
+      }
     }
 
     footer {
@@ -149,33 +149,64 @@
 
 <header>
   <h1>Jamwal PC & Laptop Services</h1>
-  <p>PC • Laptop • Software • Hardware Solutions</p>
-  <p><strong>Home Service Available – Udhampur</strong></p>
+  <p>System Diagnosis • OS Installation • Software Solutions</p>
+  <p><strong>Home Visit Available – Udhampur</strong></p>
 
-  <a href="tel:9810138985" class="btn">📞 Call Now</a>
-  <a href="https://wa.me/919810138985" class="btn" target="_blank">💬 WhatsApp</a>
+  <a href="tel:9810138985" class="btn">
+    <i class="fa-solid fa-phone"></i>Call Now
+  </a>
+
+  <a href="https://wa.me/919810138985" class="btn" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>WhatsApp
+  </a>
 </header>
 
 <section>
   <h2>Our Services</h2>
 
   <div class="services">
-    <div class="card">🖥️ PC & Laptop Repair</div>
-    <div class="card">💾 Windows Installation</div>
-    <div class="card">🛡️ Virus & Software Issues</div>
-    <div class="card">⚡ SSD & RAM Upgrade</div>
-    <div class="card">🌐 Internet & Network Setup</div>
-    <div class="card">🔧 Hardware Diagnostics</div>
+    <div class="card">
+      <i class="fa-solid fa-laptop"></i>
+      <h3>System Diagnosis</h3>
+      <p>Professional issue detection & analysis</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-brands fa-linux"></i>
+      <h3>Linux / Windows Installation</h3>
+      <p>Clean OS installation & setup</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-shield-virus"></i>
+      <h3>Software & Virus Issues</h3>
+      <p>Error fixing & system optimization</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-network-wired"></i>
+      <h3>Internet & Network Setup</h3>
+      <p>Wi-Fi & LAN configuration</p>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>Contact Us</h2>
+  <h2>Contact & Location</h2>
 
   <div class="contact">
-    <a href="tel:9810138985">📞 9810138985</a>
-    <a href="https://wa.me/919810138985" target="_blank">💬 Chat on WhatsApp</a>
-    <a href="https://www.google.com/maps/search/Udhampur" target="_blank">📍 Udhampur</a>
+    <a href="tel:9810138985">
+      <i class="fa-solid fa-phone"></i>9810138985
+    </a>
+
+    <a href="https://wa.me/919810138985" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i>Chat on WhatsApp
+    </a>
+
+    <div class="glow">
+      <i class="fa-solid fa-location-dot"></i>
+      Near Boys Degree College, Udhampur
+    </div>
   </div>
 </section>
 
