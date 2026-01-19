@@ -40,7 +40,7 @@
       margin: 6px 0;
     }
 
-    /* NEW TRUST & VALUE LINES */
+    /* TRUST LINE */
     .trust-line{
       margin-top: 14px;
       font-size: 16px;
@@ -48,11 +48,16 @@
       font-weight: 500;
     }
 
+    /* 🔥 VIBRANT VALUE LINE */
     .value-line{
-      margin-top: 6px;
-      font-size: 15px;
-      color: #9ddcff;
-      opacity: 0.9;
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #3ddcff; /* brighter cyan */
+      text-shadow:
+        0 0 6px rgba(61,220,255,0.6),
+        0 0 14px rgba(61,220,255,0.4),
+        0 4px 18px rgba(0,0,0,0.9);
     }
 
     /* ========= BUTTONS ========= */
@@ -181,7 +186,6 @@
 
   <p>System Diagnosis • Linux / Windows Installation • Software Solutions</p>
 
-  <!-- NEW LINES ADDED -->
   <div class="trust-line">
     Expert Diagnosis • Fast Service • Honest Pricing
   </div>
@@ -269,14 +273,12 @@
 </footer>
 
 <script>
-  // Visitor counter
   fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
     .then(res => res.json())
     .then(data => {
       document.getElementById("visitCount").innerText = data.value;
     });
 
-  // Visitor IP info
   fetch("https://ipapi.co/json/")
     .then(res => res.json())
     .then(data => {
