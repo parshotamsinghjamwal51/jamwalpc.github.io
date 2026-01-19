@@ -2,105 +2,70 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raise Service Request</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
-:root{
-  --accent:#1ec8ff;
-  --accent-soft:#9adfff;
-  --orange:#ff9f1c;
-  --card:#2f4b55;
-  --text:#eaf6fa;
-  --muted:#b6d1d9;
-}
-
 *{box-sizing:border-box}
 
-html, body{
+body{
   margin:0;
-  padding:0;
-  min-height:100%;
   font-family:"Segoe UI", Arial, sans-serif;
-  color:var(--text);
+  background:#0b1320;
+  color:#eaf6fa;
+}
 
+/* ===== HEADER ===== */
+header{
+  padding:80px 20px;
+  text-align:center;
   background:
-    linear-gradient(rgba(8,12,25,0.85), rgba(8,12,25,0.85)),
-    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
+    linear-gradient(rgba(8,12,25,0.9), rgba(8,12,25,0.9)),
+    url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
   background-size:cover;
   background-position:center;
-  background-attachment:fixed;
 }
 
-/* ===== TITLE ===== */
-.page-title{
-  text-align:center;
-  padding:80px 20px 40px;
+header h1{
+  font-size:36px;
+  margin-bottom:8px;
 }
 
-.page-title h1{
-  margin:0;
-  font-size:38px;
-  color:#ffffff;
-  text-shadow:0 4px 18px rgba(0,0,0,0.9);
+header p{
+  opacity:0.9;
 }
 
-.page-title .brand{
-  margin-top:14px;
-  font-size:28px;
-  font-weight:bold;
-  letter-spacing:1.6px;
-  color:var(--accent);
-  text-shadow:
-    0 0 6px rgba(30,200,255,0.5),
-    0 0 18px rgba(30,200,255,0.4),
-    0 4px 22px rgba(0,0,0,0.9);
-}
-
-.page-title .trust{
-  margin-top:14px;
-  font-size:14px;
-  color:#d6f3ff;
-}
-
-.page-title .value{
-  margin-top:6px;
-  font-size:13px;
-  color:var(--orange);
-  font-weight:600;
-}
-
-/* ===== FORM ===== */
+/* ===== FORM CARD ===== */
 .container{
   max-width:900px;
-  margin:10px auto 40px;
+  margin:40px auto;
   padding:0 20px;
 }
 
 .card{
-  background:var(--card);
+  background:#2f4b55;
+  padding:30px;
   border-radius:16px;
-  padding:32px;
-  box-shadow:0 12px 32px rgba(0,0,0,.45);
-}
-
-.section{
-  margin-bottom:38px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.4);
 }
 
 .section-title{
+  color:#1ec8ff;
   font-weight:bold;
-  color:var(--accent);
-  margin-bottom:18px;
-  border-bottom:2px solid var(--accent);
-  padding-bottom:8px;
+  border-bottom:2px solid #1ec8ff;
+  margin-bottom:20px;
+  padding-bottom:6px;
 }
 
+/* ===== INPUTS ===== */
 label{
   display:block;
-  margin:18px 0 6px;
+  margin-top:18px;
+  margin-bottom:6px;
   font-size:14px;
-  color:var(--muted);
+  color:#b6d1d9;
 }
 
 input, textarea, select{
@@ -108,23 +73,20 @@ input, textarea, select{
   padding:12px;
   border-radius:8px;
   border:none;
-  outline:none;
   font-size:14px;
-}
-
-input[type="date"]{
-  cursor:pointer;
 }
 
 textarea{resize:vertical}
 
+/* ===== TECH BOX ===== */
 .tech-box{
-  border:2px dashed var(--accent);
+  border:2px dashed #1ec8ff;
   border-radius:14px;
   padding:22px;
+  margin-top:30px;
 }
 
-/* ===== BUTTONS (PRO GLOW) ===== */
+/* ===== BUTTONS ===== */
 .buttons{
   text-align:center;
   margin-top:34px;
@@ -132,127 +94,72 @@ textarea{resize:vertical}
 
 button{
   border:none;
-  font-weight:600;
-  padding:14px 34px;
+  padding:14px 36px;
   border-radius:30px;
   margin:10px;
-  cursor:pointer;
   font-size:15px;
-  transition:all .3s ease;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-/* SUBMIT */
-button.submit{
-  background:var(--accent);
+.submit{
+  background:#1ec8ff;
   color:#00313d;
-  box-shadow:0 0 18px rgba(30,200,255,.6);
+  box-shadow:0 0 18px rgba(30,200,255,0.7);
 }
-button.submit:hover{
+.submit:hover{
+  box-shadow:0 0 28px rgba(30,200,255,1);
   transform:translateY(-3px);
-  box-shadow:
-    0 0 28px rgba(30,200,255,.9),
-    0 12px 30px rgba(0,0,0,.6);
 }
 
-/* PRINT */
-button.print{
+.print{
   background:#b9e9f8;
-  color:#00313d;
 }
-button.print:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 18px rgba(185,233,248,.8);
+.print:hover{
+  box-shadow:0 0 18px rgba(185,233,248,0.8);
 }
 
-/* PDF */
-button.pdf{
-  background:var(--orange);
+.pdf{
+  background:#ff9f1c;
   color:#2b1a00;
-  box-shadow:0 0 16px rgba(255,159,28,.6);
 }
-button.pdf:hover{
-  transform:translateY(-2px);
-  box-shadow:
-    0 0 26px rgba(255,159,28,.9),
-    0 12px 30px rgba(0,0,0,.6);
+.pdf:hover{
+  box-shadow:0 0 22px rgba(255,159,28,0.9);
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   font-size:13px;
   color:#cfefff;
-  margin:40px 0 20px;
+  margin:30px 0;
 }
 </style>
-
-<script>
-window.onload = function(){
-  const today = new Date();
-  document.getElementById("date").value =
-    today.toISOString().split("T")[0];
-
-  const timeSelect = document.getElementById("time");
-  for(let h=0; h<24; h++){
-    for(let m=0; m<60; m+=5){
-      const hh = String(h).padStart(2,"0");
-      const mm = String(m).padStart(2,"0");
-      const opt = document.createElement("option");
-      opt.value = `${hh}:${mm}:00`;
-      opt.text = `${hh}:${mm}:00`;
-      timeSelect.appendChild(opt);
-    }
-  }
-
-  const mins = today.getHours()*60 + today.getMinutes();
-  const r = Math.round(mins/5)*5;
-  timeSelect.value =
-    `${String(Math.floor(r/60)%24).padStart(2,"0")}:${String(r%60).padStart(2,"0")}:00`;
-};
-
-function submitRequest(){
-  const message =
-`🔹 Service Request
-
-*Name:* ${name.value}
-*Location:* ${location.value}
-*Problems:* ${problems.value}
-*Preferred Date:* ${date.value}
-*Preferred Time:* ${time.value}
-
-*Diagnosis:* ${diagnosis.value}
-*Status:* ${status.value}
-*Charges:* ₹${charges.value}
-*Collection Time:* ${collection.value}`;
-
-  window.open("https://wa.me/?text="+encodeURIComponent(message),"_blank");
-}
-</script>
-
 </head>
+
 <body>
 
-<div class="page-title">
+<header>
   <h1>Raise Service Request</h1>
-  <div class="brand">Jamwal PC & Laptop Services</div>
-  <div class="trust">Expert Diagnosis • Fast Service • Honest Pricing</div>
-  <div class="value">Essential Software Installation Included</div>
-</div>
+  <p>Jamwal PC & Laptop Services</p>
+</header>
 
 <div class="container">
   <div class="card">
 
+    <!-- CUSTOMER DETAILS -->
     <div class="section">
       <div class="section-title">Customer Details</div>
 
-      <label>Name</label>
-      <input id="name">
+      <label>Name *</label>
+      <input id="name" required>
 
-      <label>Location</label>
-      <input id="location">
+      <label>Location *</label>
+      <input id="location" required>
 
-      <label>Problems</label>
-      <textarea id="problems" rows="3"></textarea>
+      <label>Problems *</label>
+      <textarea id="problems" rows="3" required></textarea>
 
       <label>Preferred Date</label>
       <input id="date" type="date">
@@ -261,7 +168,8 @@ function submitRequest(){
       <select id="time"></select>
     </div>
 
-    <div class="section tech-box">
+    <!-- TECHNICIAN -->
+    <div class="tech-box">
       <div class="section-title">🛠 Technician Use Only</div>
 
       <label>Diagnosis</label>
@@ -291,9 +199,56 @@ function submitRequest(){
 </div>
 
 <footer>
-  © 2026 Jamwal PC & Laptop Services<br>
-  Professional & Reliable Support
+  © 2026 Jamwal PC & Laptop Services
 </footer>
+
+<script>
+// Time dropdown
+window.onload = function(){
+  const timeSelect = document.getElementById("time");
+  for(let h=0; h<24; h++){
+    for(let m=0; m<60; m+=5){
+      const hh = String(h).padStart(2,"0");
+      const mm = String(m).padStart(2,"0");
+      const opt = document.createElement("option");
+      opt.value = `${hh}:${mm}:00`;
+      opt.text = `${hh}:${mm}:00`;
+      timeSelect.appendChild(opt);
+    }
+  }
+};
+
+// SUBMIT WITH VALIDATION
+function submitRequest(){
+  const name = document.getElementById("name").value.trim();
+  const location = document.getElementById("location").value.trim();
+  const problems = document.getElementById("problems").value.trim();
+
+  if(!name || !location || !problems){
+    alert("Please fill Name, Location and Problems before submitting.");
+    return;
+  }
+
+  const message =
+`🔹 Service Request
+
+*Name:* ${name}
+*Location:* ${location}
+*Problems:* ${problems}
+*Preferred Date:* ${date.value}
+*Preferred Time:* ${time.value}
+
+*Diagnosis:* ${diagnosis.value}
+*Status:* ${status.value}
+*Charges:* ₹${charges.value}
+*Collection Time:* ${collection.value}`;
+
+  window.open(
+    "https://wa.me/?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+</script>
 
 </body>
 </html>
