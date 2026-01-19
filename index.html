@@ -4,6 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jamwal PC & Laptop Services</title>
+  <style>
+  /* Buttons */
+  .btn {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #ffffff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0,198,255,0.8);
+  }
+
+  .btn::after {
+    content: "→";
+    margin-left: 10px;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .btn:hover::after {
+    opacity: 1;
+  }
+
+  /* Cards */
+  .card {
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(0,198,255,0.4),
+      transparent
+    );
+    transition: 0.6s;
+  }
+
+  .card:hover::before {
+    left: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  }
+
+  /* Links */
+  a {
+    position: relative;
+    text-decoration: none;
+  }
+
+  a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #00c6ff;
+    transition: width 0.3s;
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+</style>
+
 </head>
 
 <body style="margin:0; font-family: Arial, sans-serif;">
