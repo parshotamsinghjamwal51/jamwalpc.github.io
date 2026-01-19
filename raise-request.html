@@ -23,9 +23,42 @@ body{
   color:var(--text);
 }
 
+/* HEADER – SAME IMAGE AS MAIN PAGE */
+.page-header{
+  height:260px;
+  background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+
+.header-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.header-overlay h1{
+  margin:0;
+  font-size:34px;
+  color:#ffffff;
+}
+
+.header-overlay p{
+  margin-top:8px;
+  font-size:14px;
+  color:#cfefff;
+}
+
+/* PAGE CONTENT */
 .container{
   max-width:900px;
-  margin:40px auto;
+  margin:-60px auto 40px;
   padding:20px;
 }
 
@@ -34,11 +67,6 @@ body{
   border-radius:12px;
   padding:30px;
   box-shadow:0 10px 30px rgba(0,0,0,.35);
-}
-
-h1{
-  text-align:center;
-  margin-bottom:30px;
 }
 
 .section{
@@ -141,12 +169,18 @@ function submitRequest(){
 </head>
 <body>
 
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-overlay">
+    <h1>Raise Service Request</h1>
+    <p>Jamwal PC & Laptop Services</p>
+  </div>
+</div>
+
+<!-- FORM -->
 <div class="container">
   <div class="card">
 
-    <h1>Service Request</h1>
-
-    <!-- CUSTOMER DETAILS -->
     <div class="section">
       <div class="section-title">Customer Details</div>
 
@@ -163,7 +197,6 @@ function submitRequest(){
       <input id="time" type="text">
     </div>
 
-    <!-- TECHNICIAN USE ONLY -->
     <div class="section tech-box">
       <div class="section-title">🛠 Technician Use Only</div>
 
@@ -184,7 +217,6 @@ function submitRequest(){
       <input id="collection" type="text">
     </div>
 
-    <!-- ACTION BUTTONS -->
     <div class="buttons">
       <button onclick="submitRequest()">📤 Submit</button>
       <button onclick="printPage()">🖨️ Print</button>
