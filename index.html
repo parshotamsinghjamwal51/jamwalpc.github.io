@@ -16,26 +16,21 @@ html, body{
   font-family:"Segoe UI", Arial, sans-serif;
   background:#0b1320;
   color:#fff;
-  overflow-y:auto;
 }
 
-/* ================= HEADER ================= */
+/* ================= HERO / HEADER ================= */
 header{
   position:relative;
-  padding:120px 20px 110px;
+  padding:120px 20px 100px;
   text-align:center;
 
   background:
-    linear-gradient(
-      rgba(8,12,25,0.88),
-      rgba(8,12,25,0.88)
-    ),
-    url("shiva-nandi.jpg");
+    linear-gradient(rgba(8,12,25,0.88), rgba(8,12,25,0.88)),
+    url("https://images.unsplash.com/photo-1604079628040-94301bb21b91?auto=format&fit=crop&w=2000&q=80");
   background-size:cover;
   background-position:center;
 }
 
-/* Soft vignette for blending */
 header::after{
   content:"";
   position:absolute;
@@ -43,10 +38,9 @@ header::after{
   background:
     radial-gradient(
       ellipse at center,
-      rgba(0,0,0,0.15),
+      rgba(0,0,0,0.25),
       rgba(0,0,0,0.85)
     );
-  pointer-events:none;
 }
 
 header *{
@@ -87,7 +81,7 @@ header h1{
 
 /* ================= BUTTONS ================= */
 .actions{
-  margin-top:32px;
+  margin-top:34px;
 }
 
 .btn{
@@ -118,17 +112,63 @@ header h1{
   transform:translateY(-3px);
 }
 
-/* ================= SECTION ================= */
+/* ================= SECTIONS ================= */
 section{
-  padding:60px 20px 90px;
+  padding:70px 20px;
   background:#f4f7fb;
   color:#111;
 }
 
-section h2{
+h2{
   text-align:center;
   font-size:34px;
   margin-bottom:40px;
+}
+
+/* ================= SERVICES ================= */
+.services{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:#fff;
+  padding:35px 25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  transition:.3s;
+}
+
+.card i{
+  font-size:38px;
+  color:#0d6efd;
+  margin-bottom:15px;
+}
+
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:
+    0 0 25px rgba(13,110,253,0.6),
+    0 25px 45px rgba(0,0,0,0.25);
+}
+
+/* ================= VISITOR ================= */
+.visitor-box{
+  max-width:700px;
+  margin:auto;
+  padding:25px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  text-align:center;
+}
+
+.visitor-box p{
+  margin:10px 0;
 }
 
 /* ================= FOOTER ================= */
@@ -180,12 +220,55 @@ footer{
 
 <section>
   <h2>Our Services</h2>
-  <!-- your existing service cards go here -->
+  <div class="services">
+    <div class="card">
+      <i class="fa-solid fa-laptop-code"></i>
+      <h3>System Diagnosis</h3>
+      <p>Accurate issue detection & analysis</p>
+    </div>
+    <div class="card">
+      <i class="fa-brands fa-linux"></i>
+      <h3>Linux / Windows Installation</h3>
+      <p>Clean OS install & setup</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-shield-virus"></i>
+      <h3>Software & Virus Issues</h3>
+      <p>Error fixing & optimization</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-network-wired"></i>
+      <h3>Internet & Network Setup</h3>
+      <p>Wi-Fi & LAN configuration</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Visitor Information</h2>
+  <div class="visitor-box">
+    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
+    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
+    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
+  </div>
 </section>
 
 <footer>
   © 2026 Jamwal PC & Laptop Services
 </footer>
+
+<script>
+fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
+  .then(r=>r.json())
+  .then(d=>visitCount.innerText=d.value);
+
+fetch("https://ipapi.co/json/")
+  .then(r=>r.json())
+  .then(d=>{
+    ip.innerText=d.ip;
+    location.innerText=d.city+", "+d.country_name;
+  });
+</script>
 
 </body>
 </html>
