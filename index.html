@@ -29,7 +29,6 @@
       background-position: center;
     }
 
-    /* 🔹 GLOW TITLE (ONLY CHANGE #1) */
     header h1 {
       font-size: 46px;
       text-shadow:
@@ -37,7 +36,6 @@
         0 0 18px rgba(30,200,255,0.35);
     }
 
-    /* 🔹 SUBTITLE WITH PROFESSIONAL UNDERLINE (ONLY CHANGE #2) */
     .subtitle {
       position: relative;
       display: inline-block;
@@ -55,12 +53,7 @@
       width: 60%;
       height: 3px;
       border-radius: 4px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #1ec8ff,
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, #1ec8ff, transparent);
       box-shadow: 0 0 10px rgba(30,200,255,0.7);
     }
 
@@ -137,6 +130,15 @@
       box-shadow:
         0 0 25px rgba(13,110,253,0.9),
         0 25px 45px rgba(0,0,0,0.3);
+    }
+
+    /* 🔹 ONLY CHANGE: SERVICE SUB-HEADINGS (p) */
+    .card p {
+      font-weight: 600;
+      background: linear-gradient(90deg, #0d6efd, #1ec8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(30,200,255,0.6);
     }
 
     /* ========= VISITOR INFO ========= */
@@ -269,35 +271,6 @@
   </div>
 </section>
 
-<section>
-  <h2>Visitor Information</h2>
-
-  <div class="visitor-box">
-    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
-    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
-    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
-  </div>
-</section>
-
-<section>
-  <h2>Contact & Location</h2>
-
-  <div style="text-align:center;">
-    <a href="tel:9810138985" class="btn btn-call">
-      <i class="fa-solid fa-phone"></i> 9810138985
-    </a>
-
-    <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
-      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-    </a>
-
-    <div class="glow">
-      <i class="fa-solid fa-location-dot"></i>
-      Near Boys Degree College, Udhampur
-    </div>
-  </div>
-</section>
-
 <footer>
   © 2026 Jamwal PC & Laptop Services
 </footer>
@@ -310,22 +283,6 @@
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 </div>
-
-<script>
-  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("visitCount").innerText = data.value;
-    });
-
-  fetch("https://ipapi.co/json/")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("ip").innerText = data.ip;
-      document.getElementById("location").innerText =
-        data.city + ", " + data.country_name;
-    });
-</script>
 
 </body>
 </html>
