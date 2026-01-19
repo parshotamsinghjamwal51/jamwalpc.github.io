@@ -29,8 +29,31 @@
       background-position: center;
     }
 
-    header h1 { font-size: 46px; }
-    header p { font-size: 18px; opacity: 0.9; }
+    header h1 { 
+      font-size: 46px; 
+      margin-bottom: 10px;
+    }
+
+    header p { 
+      font-size: 18px; 
+      opacity: 0.9; 
+      margin: 6px 0;
+    }
+
+    /* NEW TRUST & VALUE LINES */
+    .trust-line{
+      margin-top: 14px;
+      font-size: 16px;
+      color: #cfe7ff;
+      font-weight: 500;
+    }
+
+    .value-line{
+      margin-top: 6px;
+      font-size: 15px;
+      color: #9ddcff;
+      opacity: 0.9;
+    }
 
     /* ========= BUTTONS ========= */
     .btn {
@@ -155,7 +178,18 @@
 
 <header>
   <h1>Jamwal PC & Laptop Services</h1>
+
   <p>System Diagnosis • Linux / Windows Installation • Software Solutions</p>
+
+  <!-- NEW LINES ADDED -->
+  <div class="trust-line">
+    Expert Diagnosis • Fast Service • Honest Pricing
+  </div>
+
+  <div class="value-line">
+    Software Installation Included • No Extra Cost
+  </div>
+
   <p><strong>Home Visit Available – Udhampur</strong></p>
 
   <a href="tel:9810138985" class="btn btn-call">
