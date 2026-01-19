@@ -7,64 +7,69 @@
 
 <style>
 :root{
-  --bg:#0f2a33;
-  --card:#2f4b55;
   --accent:#1ec8ff;
+  --card:#2f4b55;
   --text:#eaf6fa;
   --muted:#b6d1d9;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html, body{
   margin:0;
   padding:0;
-  width:100%;
-  background:var(--bg);
-  color:var(--text);
+  min-height:100%;
   font-family: Arial, Helvetica, sans-serif;
-}
+  color:var(--text);
 
-/* ===== FULL WIDTH HEADER ===== */
-.page-header{
-  width:100vw;
-  height:300px;
+  /* FULL PAGE BACKGROUND IMAGE */
   background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
   background-size:cover;
   background-position:center;
-  position:relative;
+  background-attachment:fixed;
 }
 
-.header-overlay{
-  position:absolute;
+/* DARK OVERLAY */
+body::before{
+  content:"";
+  position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.65);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  background:rgba(0,0,0,0.7);
+  z-index:-1;
+}
+
+/* PAGE TITLE */
+.page-title{
   text-align:center;
+  padding:70px 20px 30px;
 }
 
-.header-overlay h1{
+.page-title h1{
   margin:0;
-  font-size:36px;
+  font-size:38px;
   color:#ffffff;
+  text-shadow:0 4px 15px rgba(0,0,0,0.9);
 }
 
-.header-overlay p{
-  margin-top:8px;
-  font-size:14px;
-  color:#cfefff;
+/* 🔥 GLOWING BUSINESS NAME */
+.page-title .brand{
+  margin-top:12px;
+  font-size:26px;
+  font-weight:bold;
+  letter-spacing:1.5px;
+  color:var(--accent);
+
+  text-shadow:
+    0 0 5px rgba(30,200,255,0.6),
+    0 0 15px rgba(30,200,255,0.6),
+    0 0 30px rgba(30,200,255,0.4),
+    0 4px 20px rgba(0,0,0,0.9);
 }
 
-/* ===== PAGE CONTENT ===== */
+/* FORM CONTAINER */
 .container{
-  width:100%;
   max-width:900px;
-  margin:-70px auto 40px auto;
+  margin:10px auto 40px;
   padding:0 20px;
 }
 
@@ -72,9 +77,10 @@ html, body{
   background:var(--card);
   border-radius:14px;
   padding:30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
 }
 
+/* SECTIONS */
 .section{
   margin-bottom:35px;
 }
@@ -103,9 +109,7 @@ input, textarea, select{
   font-size:14px;
 }
 
-textarea{
-  resize:vertical;
-}
+textarea{resize:vertical}
 
 .tech-box{
   border:2px dashed var(--accent);
@@ -113,7 +117,7 @@ textarea{
   padding:20px;
 }
 
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 .buttons{
   text-align:center;
   margin-top:30px;
@@ -131,16 +135,14 @@ button{
   font-size:15px;
 }
 
-button:hover{
-  opacity:0.9;
-}
+button:hover{opacity:0.9}
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
   text-align:center;
   font-size:13px;
-  color:var(--muted);
-  margin-top:40px;
+  color:#cfefff;
+  margin:40px 0 20px;
 }
 </style>
 
@@ -180,12 +182,10 @@ function submitRequest(){
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="page-header">
-  <div class="header-overlay">
-    <h1>Raise Service Request</h1>
-    <p>Jamwal PC & Laptop Services</p>
-  </div>
+<!-- TITLE -->
+<div class="page-title">
+  <h1>Raise Service Request</h1>
+  <div class="brand">Jamwal PC & Laptop Services</div>
 </div>
 
 <!-- FORM -->
@@ -235,12 +235,12 @@ function submitRequest(){
     </div>
 
   </div>
-
-  <footer>
-    © 2026 Jamwal PC & Laptop Services<br>
-    Professional & Reliable Support
-  </footer>
 </div>
+
+<footer>
+  © 2026 Jamwal PC & Laptop Services<br>
+  Professional & Reliable Support
+</footer>
 
 </body>
 </html>
