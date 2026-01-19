@@ -14,19 +14,24 @@
   --muted:#b6d1d9;
 }
 
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:var(--bg);
-  color:var(--text);
+*{
+  box-sizing:border-box;
 }
 
-/* HEADER – SAME IMAGE AS MAIN PAGE */
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== FULL WIDTH HEADER ===== */
 .page-header{
-  height:260px;
-  background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80");
+  width:100vw;
+  height:300px;
+  background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80");
   background-size:cover;
   background-position:center;
   position:relative;
@@ -45,7 +50,7 @@ body{
 
 .header-overlay h1{
   margin:0;
-  font-size:34px;
+  font-size:36px;
   color:#ffffff;
 }
 
@@ -55,18 +60,19 @@ body{
   color:#cfefff;
 }
 
-/* PAGE CONTENT */
+/* ===== PAGE CONTENT ===== */
 .container{
+  width:100%;
   max-width:900px;
-  margin:-60px auto 40px;
-  padding:20px;
+  margin:-70px auto 40px auto;
+  padding:0 20px;
 }
 
 .card{
   background:var(--card);
-  border-radius:12px;
+  border-radius:14px;
   padding:30px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
 
 .section{
@@ -97,7 +103,9 @@ input, textarea, select{
   font-size:14px;
 }
 
-textarea{resize:vertical}
+textarea{
+  resize:vertical;
+}
 
 .tech-box{
   border:2px dashed var(--accent);
@@ -105,6 +113,7 @@ textarea{resize:vertical}
   padding:20px;
 }
 
+/* ===== BUTTONS ===== */
 .buttons{
   text-align:center;
   margin-top:30px;
@@ -115,15 +124,18 @@ button{
   border:none;
   color:#00313d;
   font-weight:bold;
-  padding:12px 28px;
+  padding:12px 30px;
   border-radius:30px;
   margin:10px;
   cursor:pointer;
   font-size:15px;
 }
 
-button:hover{opacity:.9}
+button:hover{
+  opacity:0.9;
+}
 
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   font-size:13px;
@@ -148,7 +160,7 @@ function submitRequest(){
   const charges = document.getElementById("charges").value;
   const collection = document.getElementById("collection").value;
 
-  let message =
+  const message =
 `🔹 Service Request
 
 *Name:* ${name}
@@ -161,8 +173,7 @@ function submitRequest(){
 *Charges:* ₹${charges}
 *Collection Time:* ${collection}`;
 
-  const url = "https://wa.me/?text=" + encodeURIComponent(message);
-  window.open(url, "_blank");
+  window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
 }
 </script>
 
