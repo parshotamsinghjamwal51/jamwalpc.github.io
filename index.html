@@ -29,22 +29,21 @@
       background-position: center;
     }
 
-    /* 🔹 GLOW TITLE (ONLY THIS CHANGE) */
+    /* 🔹 GLOW TITLE (ONLY CHANGE #1) */
     header h1 {
       font-size: 46px;
       text-shadow:
-        0 0 10px rgba(30,200,255,0.6),
-        0 0 22px rgba(30,200,255,0.35);
+        0 0 8px rgba(30,200,255,0.6),
+        0 0 18px rgba(30,200,255,0.35);
     }
 
-    /* 🔹 SUBTITLE WITH PROFESSIONAL UNDERLINE */
+    /* 🔹 SUBTITLE WITH PROFESSIONAL UNDERLINE (ONLY CHANGE #2) */
     .subtitle {
       position: relative;
       display: inline-block;
       font-size: 18px;
-      opacity: 0.95;
+      opacity: 0.9;
       padding-bottom: 14px;
-      margin-top: 6px;
     }
 
     .subtitle::after {
@@ -62,7 +61,7 @@
         #1ec8ff,
         transparent
       );
-      box-shadow: 0 0 12px rgba(30,200,255,0.7);
+      box-shadow: 0 0 10px rgba(30,200,255,0.7);
     }
 
     /* ========= BUTTONS ========= */
@@ -140,6 +139,22 @@
         0 25px 45px rgba(0,0,0,0.3);
     }
 
+    /* ========= VISITOR INFO ========= */
+    .visitor-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .visitor-box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
     /* ========= LOCATION ========= */
     .glow {
       margin-top: 30px;
@@ -180,6 +195,8 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        background: #050a14;
+        border-top: 1px solid #111;
         z-index: 9999;
       }
 
@@ -222,11 +239,69 @@
   </a>
 </header>
 
+<section>
+  <h2>Our Services</h2>
+
+  <div class="services">
+    <div class="card">
+      <i class="fa-solid fa-laptop-code"></i>
+      <h3>System Diagnosis</h3>
+      <p>Accurate issue detection & analysis</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-brands fa-linux"></i>
+      <h3>Linux / Windows Installation</h3>
+      <p>Clean OS install & setup</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-shield-virus"></i>
+      <h3>Software & Virus Issues</h3>
+      <p>Error fixing & optimization</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-network-wired"></i>
+      <h3>Internet & Network Setup</h3>
+      <p>Wi-Fi & LAN configuration</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Visitor Information</h2>
+
+  <div class="visitor-box">
+    <p><strong>Total Visits:</strong> <span id="visitCount">Loading…</span></p>
+    <p><strong>Your IP:</strong> <span id="ip">Loading…</span></p>
+    <p><strong>Your Location:</strong> <span id="location">Loading…</span></p>
+  </div>
+</section>
+
+<section>
+  <h2>Contact & Location</h2>
+
+  <div style="text-align:center;">
+    <a href="tel:9810138985" class="btn btn-call">
+      <i class="fa-solid fa-phone"></i> 9810138985
+    </a>
+
+    <a href="https://wa.me/919810138985" class="btn btn-whatsapp" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+
+    <div class="glow">
+      <i class="fa-solid fa-location-dot"></i>
+      Near Boys Degree College, Udhampur
+    </div>
+  </div>
+</section>
+
 <footer>
   © 2026 Jamwal PC & Laptop Services
 </footer>
 
-<!-- MOBILE BAR -->
 <div class="mobile-bar">
   <a href="tel:9810138985" class="mobile-call">
     <i class="fa-solid fa-phone"></i> Call
@@ -235,6 +310,22 @@
     <i class="fa-brands fa-whatsapp"></i> WhatsApp
   </a>
 </div>
+
+<script>
+  fetch("https://api.countapi.xyz/hit/jamwalpc/visits")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitCount").innerText = data.value;
+    });
+
+  fetch("https://ipapi.co/json/")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("ip").innerText = data.ip;
+      document.getElementById("location").innerText =
+        data.city + ", " + data.country_name;
+    });
+</script>
 
 </body>
 </html>
