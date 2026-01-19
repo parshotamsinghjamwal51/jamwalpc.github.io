@@ -16,7 +16,7 @@ html,body{
   font-family:"Segoe UI", Arial, sans-serif;
 }
 
-/* ===== HEADER (DESKTOP BACKGROUND RESTORED) ===== */
+/* ===== HEADER ===== */
 header{
   padding:120px 20px 100px;
   text-align:center;
@@ -91,6 +91,11 @@ section{
   color:#111;
 }
 
+/* extra spacing before footer so it never feels cut */
+section:last-of-type{
+  padding-bottom:120px;
+}
+
 h2{
   text-align:center;
   font-size:34px;
@@ -114,13 +119,14 @@ h2{
   box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* ===== FOOTER (RESTORED & CLEAR) ===== */
+/* ===== FOOTER (FIXED VISIBILITY) ===== */
 footer{
   background:#050a14;
   text-align:center;
-  padding:22px;
+  padding:28px 20px;
   font-size:14px;
   color:#cfe7ff;
+  border-top:3px solid #1ec8ff; /* visual separation */
 }
 
 /* =================================================
