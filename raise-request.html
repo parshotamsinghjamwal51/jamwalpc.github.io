@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Raise Service Request</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <!-- PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      font-size: 38px;
+    }
+
+    .actions {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .action-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: #00c6ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .action-btn i {
+      margin-right: 8px;
+    }
+
+    .action-btn:hover {
+      box-shadow: 0 0 25px #00c6ff;
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .card h2 {
+      color: #00c6ff;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .admin {
+      border: 2px dashed #00c6ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* PRINT STYLE */
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+      .actions {
+        display: none;
+      }
+      .card {
+        background: #fff;
+        box-shadow: none;
+        border: 1px solid #000;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📝 Raise Service Request</h1>
+  <p>Jamwal PC & Laptop Services</p>
+</header>
+
+<!-- TOP ACTION BUTTONS -->
+<div class="actions">
+  <button class="action-btn" onclick="window.print()">
+    <i class="fa-solid fa-print"></i> Print
+  </button>
+
+  <button class="action-btn" onclick="downloadPDF()">
+    <i class="fa-solid fa-file-pdf"></i> Download PDF
+  </button>
+</div>
+
+<div class="container" id="requestForm">
+
+  <!-- CUSTOMER SECTION -->
+  <div class="card">
+    <h2><i class="fa-solid fa-user"></i> Customer Details</h2>
+
+    <div class="field">
+      <label>Name</label>
+      <input type="text">
+    </div>
+
+    <div class="field">
+      <label>Location</label>
+      <input type="text">
+    </div>
+
+    <div class="field">
+      <label>Problem Description</label>
+      <textarea></textarea>
+    </div>
+
+    <div class="field">
+      <label>Preferred Delivery Time</label>
+      <input type="text">
+    </div>
+  </div>
+
+  <!-- ADMIN SECTION -->
+  <div class="card admin">
+    <h2><i class="fa-solid fa-screwdriver-wrench"></i> Technician Use Only</h2>
+
+    <div class="field">
+      <label>Diagnosis</label>
+      <textarea></textarea>
+    </div>
+
+    <div class="field">
+      <label>Issue Status</label>
+      <select>
+        <option>Resolved</option>
+        <option>Not Resolved</option>
+        <option>Pending</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Charge (₹)</label>
+      <input type="number">
+    </div>
+
+    <div class="field">
+      <label>Collection Date & Time</label>
+      <input type="text">
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM ACTION BUTTONS -->
+<div class="actions">
+  <button class="action-btn" onclick="window.print()">
+    <i class="fa-solid fa-print"></i> Print
+  </button>
+
+  <button class="action-btn" onclick="downloadPDF()">
+    <i class="fa-solid fa-file-pdf"></i> Download PDF
+  </button>
+</div>
+
+<footer>
+  © 2026 Jamwal PC & Laptop Services
+</footer>
+
+<script>
+  function downloadPDF() {
+    const element = document.getElementById("requestForm");
+    html2pdf().from(element).save("service-request.pdf");
+  }
+</script>
+
+</body>
+</html>
