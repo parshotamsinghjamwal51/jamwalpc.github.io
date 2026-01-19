@@ -1,236 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Raise Service Request</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Request | Jamwal PC & Laptop Services</title>
 
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
-  <!-- PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #fff;
-    }
-
-    header {
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    header h1 { font-size: 36px; }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      border-radius: 18px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    }
-
-    .card h2 {
-      color: #00c6ff;
-      margin-bottom: 20px;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    .field input,
-    .field textarea,
-    .field select {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      font-size: 15px;
-    }
-
-    textarea { min-height: 80px; }
-
-    .admin {
-      border: 2px dashed #00c6ff;
-    }
-
-    .actions {
-      text-align: center;
-      margin: 25px 0;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 34px;
-      border-radius: 40px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-      margin: 10px;
-    }
-
-    .btn-submit {
-      background: #25D366;
-      color: #fff;
-    }
-
-    .btn-submit:hover {
-      box-shadow: 0 0 30px #25D366;
-      transform: translateY(-2px);
-    }
-
-    .btn-action {
-      background: #00c6ff;
-      color: #000;
-    }
-
-    .btn-action:hover {
-      box-shadow: 0 0 25px #00c6ff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    @media print {
-      body { background: #fff; color: #000; }
-      .actions { display: none; }
-      .card { background: #fff; box-shadow: none; border: 1px solid #000; }
-    }
-  </style>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2 {
+    text-align: center;
+    color: #222;
+}
+.section-title {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #0a58ca;
+    border-bottom: 2px solid #0a58ca;
+    padding-bottom: 5px;
+}
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+textarea {
+    resize: vertical;
+}
+.note {
+    font-size: 13px;
+    color: #555;
+    margin-top: 10px;
+}
+.footer {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 25px;
+    color: #777;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>📝 Raise Service Request</h1>
-  <p>Jamwal PC & Laptop Services</p>
-</header>
+<div class="container">
+    <h2>Service Request</h2>
 
-<div class="container" id="requestForm">
+    <!-- CUSTOMER SECTION -->
+    <div class="section-title">Customer Details</div>
 
-  <!-- CUSTOMER -->
-  <div class="card">
-    <h2><i class="fa-solid fa-user"></i> Customer Details</h2>
+    <label>Name</label>
+    <input type="text" placeholder="Enter your name">
 
-    <div class="field">
-      <label>Name</label>
-      <input type="text" id="name">
+    <label>Location</label>
+    <input type="text" placeholder="Enter your location">
+
+    <label>Problem</label>
+    <textarea rows="3" placeholder="Describe the issue"></textarea>
+
+    <label>Preferred Time</label>
+    <input type="text" placeholder="e.g. 10 AM – 12 PM">
+
+    <p class="note">Please submit only the above details. Service updates will be shared separately.</p>
+
+    <!-- TECHNICIAN SECTION -->
+    <div class="section-title">Service Update (Office Use Only)</div>
+
+    <label>Diagnosis</label>
+    <input type="text" placeholder="Technician diagnosis">
+
+    <label>Status</label>
+    <input type="text" placeholder="Pending / In Progress / Resolved">
+
+    <label>Charge (₹)</label>
+    <input type="text" placeholder="Enter amount">
+
+    <label>Collection Time</label>
+    <input type="text" placeholder="Device collection time">
+
+    <div class="footer">
+        Jamwal PC & Laptop Services<br>
+        Professional & Reliable Support
     </div>
-
-    <div class="field">
-      <label>Location</label>
-      <input type="text" id="location">
-    </div>
-
-    <div class="field">
-      <label>Problem Description</label>
-      <textarea id="problem"></textarea>
-    </div>
-
-    <div class="field">
-      <label>Preferred Delivery Time</label>
-      <input type="text" id="time">
-    </div>
-  </div>
-
-  <!-- TECHNICIAN -->
-  <div class="card admin">
-    <h2><i class="fa-solid fa-screwdriver-wrench"></i> Technician Use Only</h2>
-
-    <div class="field">
-      <label>Diagnosis</label>
-      <textarea id="diagnosis"></textarea>
-    </div>
-
-    <div class="field">
-      <label>Issue Status</label>
-      <select id="status">
-        <option>Resolved</option>
-        <option>Not Resolved</option>
-        <option>Pending</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label>Charge (₹)</label>
-      <input type="number" id="charge">
-    </div>
-
-    <div class="field">
-      <label>Collection Date & Time</label>
-      <input type="text" id="collection">
-    </div>
-  </div>
-
 </div>
-
-<!-- ACTION BUTTONS -->
-<div class="actions">
-  <button class="btn btn-submit" onclick="sendWhatsApp()">
-    <i class="fa-brands fa-whatsapp"></i> Submit & Notify on WhatsApp
-  </button>
-
-  <button class="btn btn-action" onclick="window.print()">
-    <i class="fa-solid fa-print"></i> Print
-  </button>
-
-  <button class="btn btn-action" onclick="downloadPDF()">
-    <i class="fa-solid fa-file-pdf"></i> Download PDF
-  </button>
-</div>
-
-<footer>
-  © 2026 Jamwal PC & Laptop Services
-</footer>
-
-<script>
-  function sendWhatsApp() {
-    const msg =
-      "📝 *Service Request*\n\n" +
-      "*Name:* " + document.getElementById("name").value + "\n" +
-      "*Location:* " + document.getElementById("location").value + "\n" +
-      "*Problem:* " + document.getElementById("problem").value + "\n" +
-      "*Preferred Time:* " + document.getElementById("time").value + "\n\n" +
-      "*Diagnosis:* " + document.getElementById("diagnosis").value + "\n" +
-      "*Status:* " + document.getElementById("status").value + "\n" +
-      "*Charge:* ₹" + document.getElementById("charge").value + "\n" +
-      "*Collection:* " + document.getElementById("collection").value;
-
-    const url = "https://wa.me/919810138985?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank");
-  }
-
-  function downloadPDF() {
-    const element = document.getElementById("requestForm");
-    html2pdf().from(element).save("service-request.pdf");
-  }
-</script>
 
 </body>
 </html>
